@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Orų Stotelės</string>
+    <string name="temperature">Temperatūra</string>
+    <string name="wind">Vėjas</string>
+    <string name="precipitation">Krituliai</string>
+    <string name="visibility">Matomumas</string>
+    <string name="dew_point">Rasos taškas</string>
+    <string name="road_surface">Kelio danga</string>
+    <string name="stations">Stotelės</string>
+    <string name="map">Žemėlapis</string>
+    <string name="weather_stations">Orų Stotelės</string>
+    <string name="search">Paieška</string>
+    <string name="wind_avg">Vėjas vid.</string>
+    <string name="wind_max">Vėjas maks.</string>
+    <string name="wind_direction">Vėjo kryptis</string>
+    <string name="starred">Pažymėtos</string>
+    <string name="try_again">Bandyk iš naujo</string>
+    <string name="error">Klaida</string>
+    <string name="station">Stotelė</string>
+    <string name="unable_to_load_photo">Nepavyko užkrauti nuotraukos</string>
+    <string name="view_history">Istorija</string>
+    <string name="updated">Atnaujinta</string>
+    <string name="close">Uždaryti</string>
+    <string name="settings">Nustatymai</string>
+    <string name="home_screen">Pradinis ekranas</string>
+    <string name="language">Kalba</string>
+    <string name="lithuanian">Lietuvių</string>
+    <string name="english">Anglų</string>
+    <string name="defaultValue">Numatytoji</string>
+    <string name="app_description">Pamatykite tiesioginę orų informaciją iš daugiau nei šimto orų stotelių, išdėstytų pagrindiniuose Lietuvos keliuose.</string>
+    <string name="lithuanian_road_administration">Lietuvos Kelių Direkcija</string>
+    <string name="here">čia</string>
+    <string name="if_you_want_to_report_a_bug_or_request_a_feature_please">Jei norite pranešti apie klaidą ar pasiūlyti kaip padaryti programėlę geresne, prašau</string>
+    <string name="on_the_project_s_github_page">projekto GitHub puslapyje.</string>
+    <string name="the_app_icon_is_from">"Programėlės ikonėlė yra iš "</string>
+    <string name="create_an_issue">sukurkite užklausą</string>
+    <string name="theme">Tema</string>
+    <string name="light">Šviesi</string>
+    <string name="dark">Tamsi</string>
+    <string name="about">Apie</string>
+    <string name="the_weather_data_used_in_the_app_comes_from">Orų informacija naudojama programėlėje yra iš</string>
+    <string name="is_free_and_open_source_application_the_source_code_can_be_found">yra nemokama ir atvirojo kodo programa. Išeities kodą galite rasti</string>
+    <string name="version">Versija: %1$s</string>
+</resources>
