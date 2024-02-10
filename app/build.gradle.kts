@@ -12,8 +12,8 @@ android {
         applicationId = "com.boatsbay.weather_stations"
         minSdk = 24
         targetSdk = 34
-        versionCode = 11
-        versionName = "2.1.0"
+        versionCode = 12
+        versionName = "2.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
