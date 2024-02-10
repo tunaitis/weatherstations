@@ -41,4 +41,9 @@
     <string name="the_weather_data_used_in_the_app_comes_from">The weather data used in the app comes from</string>
     <string name="is_free_and_open_source_application_the_source_code_can_be_found">is free and open source application. The source code can be found</string>
     <string name="version">Version: %1$s</string>
+    <string name="alphabetical">Alphabetical</string>
+    <string name="distance">Distance</string>
+    <string name="distance_to_station">Distance</string>
+    <string name="location_permission_is_not_granted">Location permission is not granted</string>
+    <string name="location_is_turned_off">Location is turned off</string>
 </resources>

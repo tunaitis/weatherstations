@@ -8,7 +8,7 @@ import java.util.Date
 fun emptyStation(): Station = Station(id = "", name = "")
 
 data class Station(
-    val id: String,
+    var id: String,
 
     @SerializedName("irenginys")
     val name: String,
@@ -54,6 +54,7 @@ data class Station(
     val visibility: Int = 0,
 
     val isStarred: Boolean = false,
+    var distance: Float = 0.0f,
 ) {
     fun doesMatchSearchQuery(query: String): Boolean {
         val combinations = listOf(

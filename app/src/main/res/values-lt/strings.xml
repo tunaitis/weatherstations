@@ -42,4 +42,9 @@
     <string name="the_weather_data_used_in_the_app_comes_from">Orų informacija naudojama programėlėje yra iš</string>
     <string name="is_free_and_open_source_application_the_source_code_can_be_found">yra nemokama ir atvirojo kodo programa. Išeities kodą galite rasti</string>
     <string name="version">Versija: %1$s</string>
+    <string name="alphabetical">Abecėlė</string>
+    <string name="distance">Atstumas</string>
+    <string name="distance_to_station">Iki stotelės</string>
+    <string name="location_permission_is_not_granted">Nesuteiktas leidimas naudoti vietovės informaciją</string>
+    <string name="location_is_turned_off">Vietovės nustatymas yra išjungtas</string>
 </resources>

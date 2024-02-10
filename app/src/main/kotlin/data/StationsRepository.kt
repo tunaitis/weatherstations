@@ -1,19 +1,40 @@
 package weatherstations.data
 
-import weatherstations.models.Station
+import android.location.Location
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import weatherstations.models.Station
 
 class StationsRepository(
     private val settingsStore: SettingsStore,
     private val stationsDataSource: StationsDataSource,
+    locationService: LocationDataSource,
+    externalScope: CoroutineScope
 ) {
 
     private val _allStations = MutableStateFlow<List<Station>>(emptyList())
 
-    val allStations: StateFlow<List<Station>>
-        get() = _allStations
+    val allStations: StateFlow<List<Station>> = combine(_allStations, locationService.lastLocation) { stations, location ->
+        if (location == null) {
+            stations
+        } else {
+            stations.map { station ->
+                var r = floatArrayOf(0.0f)
+                Location.distanceBetween(location.latitude, location.longitude, station.latitude, station.longitude, r)
+                station.distance = r[0]
+                station
+            }
+        }
+    }.stateIn(
+        externalScope,
+        SharingStarted.WhileSubscribed(5000),
+        _allStations.value
+    )
 
     suspend fun refreshStations(): ErrorType? {
         val starredStations = settingsStore.getStarredStations()

@@ -13,6 +13,8 @@ Orų Stotelės may request certain permissions to access device features necessa
 List of Permissions:
 INTERNET
 ACCESS_INTERNET_STATE
+ACCESS_COARSE_LOCATION
+ACCESS_FINE_LOCATION
 
 These permissions are solely used to provide you with the intended services of the app and are not utilized to gather any personal information.
 

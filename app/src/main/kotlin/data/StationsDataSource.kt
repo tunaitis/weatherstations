@@ -58,6 +58,7 @@ class StationsDataSource {
             client
                 .get("https://eismoinfo.lt/weather-conditions-service")
                 .body<List<Station>>()
+                .sortedBy { it.name }
         }
     }
 

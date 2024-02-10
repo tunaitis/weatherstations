@@ -9,6 +9,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import weatherstations.data.LocationDataSource
 import weatherstations.data.SettingsStore
 import weatherstations.data.StationsRepository
 import weatherstations.ui.about.AboutScreen
@@ -28,9 +29,9 @@ import weatherstations.ui.theme.WeatherStationsTheme
 fun App(
     appViewModel: AppViewModel,
     settingsStore: SettingsStore,
-    stationsRepository: StationsRepository
+    stationsRepository: StationsRepository,
+    locationDataSource: LocationDataSource,
 ) {
-
     val isDark = appViewModel.isDarkTheme.collectAsState().value
 
     WeatherStationsTheme(
@@ -48,7 +49,7 @@ fun App(
         ) {
             composable("home") {
                 val viewModel = viewModel {
-                    HomeViewModel(settingsStore, stationsRepository)
+                    HomeViewModel(settingsStore, stationsRepository, locationDataSource)
                 }
 
                 HomeScreen(

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.CameraAlt
@@ -211,17 +212,34 @@ fun StationCard(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Column {
-                Text(
-                    text = stringResource(R.string.updated),
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.alpha(0.7f),
-                )
-                Text(
-                    text = station.updated,
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.alpha(0.7f),
-                )
+            Row {
+                Column {
+                    Text(
+                        text = stringResource(R.string.updated),
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.alpha(0.4f),
+                    )
+                    Text(
+                        text = station.updated,
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.alpha(0.7f),
+                    )
+                }
+                if (station.distance > 0) {
+                    Spacer(modifier = Modifier.width(15.dp))
+                    Column {
+                        Text(
+                            text = stringResource(R.string.distance_to_station),
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.alpha(0.4f),
+                        )
+                        Text(
+                            text = "%.2f km".format(station.distance / 1000),
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.alpha(0.7f),
+                        )
+                    }
+                }
             }
             Row {
                 IconButton(onClick = { onHistoryClick(station.id) }) {

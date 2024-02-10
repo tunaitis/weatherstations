@@ -1,5 +1,6 @@
 package weatherstations.ui.home
 
+import android.widget.Toast
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.background
@@ -9,10 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Sort
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Place
@@ -23,6 +26,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -32,12 +36,16 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -46,6 +54,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import weatherstations.R
 import weatherstations.data.ErrorType
 import weatherstations.ui.components.ErrorTryAgain
@@ -82,7 +91,7 @@ fun HomeScreen(
 
     if (isLoading) {
         ProgressIndicator()
-    } else if (error != null) {
+    } else if (error != null && (error is ErrorType.UnknownError || error is ErrorType.NetworkError)) {
         ErrorTryAgain(
             error = error ?: ErrorType.UnknownError,
             onTryAgain = viewModel::refreshStations,
@@ -99,7 +108,7 @@ fun HomeScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
 @Composable
 fun HomeScreenContent(
     viewModel: HomeViewModel,
@@ -114,9 +123,38 @@ fun HomeScreenContent(
     val currentDestination = navBackStackEntry?.destination
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
 
-    val stations by viewModel.stations.collectAsState()
+    val stations by viewModel.sortedStations.collectAsState()
     val selectedStation = viewModel.selectedStation.collectAsState()
-    val isDropdownMenuExpanded by viewModel.isDropdownMenuExpanded.collectAsState()
+    val isMoreExpanded = remember {
+        mutableStateOf(false)
+    }
+    val isSortExpanded = remember {
+        mutableStateOf(false)
+    }
+
+    val sort by viewModel.sort.collectAsState()
+    val error by viewModel.error.collectAsState()
+    val context = LocalContext.current
+
+    LaunchedEffect(error) {
+        if (error is ErrorType.LocationPermissionError) {
+            Toast.makeText(
+                context,
+                context.resources.getString(R.string.location_permission_is_not_granted),
+                Toast.LENGTH_LONG
+            ).show()
+            viewModel.clearError()
+        }
+
+        if (error is ErrorType.LocationDisabledError) {
+            Toast.makeText(
+                context,
+                context.resources.getString(R.string.location_is_turned_off),
+                Toast.LENGTH_LONG
+            ).show()
+            viewModel.clearError()
+        }
+    }
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -130,28 +168,65 @@ fun HomeScreenContent(
                 },
                 scrollBehavior = if (currentDestination?.hierarchy?.any { it.route == "map" } == true) null else scrollBehavior,
                 actions = {
+                    IconButton( onClick = {
+                        isSortExpanded.value = true
+                    }, ) {
+                        Icon(Icons.Default.Sort, contentDescription = null)
+                    }
                     IconButton( onClick = onSearchClick, ) {
                         Icon(Icons.Default.Search, contentDescription = null)
                     }
-                    IconButton( onClick = viewModel::expandDropdown, ) {
+                    IconButton( onClick = {
+                        isMoreExpanded.value = true
+                    }, ) {
                         Icon(Icons.Default.MoreVert, contentDescription = null)
                     }
+
                     DropdownMenu(
-                        expanded = isDropdownMenuExpanded,
-                        onDismissRequest = viewModel::collapseDropdownMenu
+                        expanded = isSortExpanded.value,
+                        onDismissRequest = { isSortExpanded.value = false }
+                    ) {
+                        DropdownMenuItem(
+                            text = {
+                                Text(stringResource(R.string.alphabetical), color = if (sort == StationListSort.Alphabetical) MaterialTheme.colorScheme.primary else Color.Unspecified)
+                            },
+                            onClick = {
+                                isSortExpanded.value = false
+                                viewModel.sort(StationListSort.Alphabetical)
+                            },
+                            trailingIcon = {
+                                Icon(Icons.Default.Check, contentDescription = null, tint = if (sort == StationListSort.Alphabetical) MaterialTheme.colorScheme.primary else Color.Transparent)
+                            }
+                        )
+                        DropdownMenuItem(
+                            text = {
+                                Text(stringResource(R.string.distance), color = if (sort == StationListSort.Distance) MaterialTheme.colorScheme.primary else Color.Unspecified)
+                            },
+                            onClick = {
+                                isSortExpanded.value = false
+                                viewModel.sort(StationListSort.Distance)
+                            },
+                            trailingIcon = {
+                                Icon(Icons.Default.Check, contentDescription = null, tint = if (sort == StationListSort.Distance) MaterialTheme.colorScheme.primary else Color.Transparent)
+                            }
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = isMoreExpanded.value,
+                        onDismissRequest = { isMoreExpanded.value = false }
                     ) {
                         DropdownMenuItem(
                             text = { Text(stringResource(id = R.string.settings)) },
                             onClick = {
                                 onSettingsClick()
-                                viewModel.collapseDropdownMenu()
+                                isMoreExpanded.value = false
                             }
                         )
                         DropdownMenuItem(
                             text = { Text(stringResource(R.string.about)) },
                             onClick = {
                                 onAboutClick()
-                                viewModel.collapseDropdownMenu()
+                                isMoreExpanded.value = false
                             }
                         )
                     }

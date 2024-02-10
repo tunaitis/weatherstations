@@ -9,4 +9,6 @@ sealed class ErrorType(val message: String) {
 
     data object UnknownError: ErrorType(message = "An unknown error has occurred")
     data object NetworkError: ErrorType(message = "A network error has occurred")
+    data object LocationPermissionError: ErrorType(message = "Location permission is not granted")
+    data object LocationDisabledError: ErrorType(message = "Location is turned off")
 }
