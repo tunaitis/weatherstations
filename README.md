@@ -20,6 +20,10 @@ App features:
 
 [Download](https://play.google.com/store/apps/details?id=com.boatsbay.weather_stations) the app from Google Play Store.
 
+## iOS App
+
+The iOS app is still work in progress 
+
 ## Credits
 
 * Application icon is from [Flaticon](https://flaticon.com)
