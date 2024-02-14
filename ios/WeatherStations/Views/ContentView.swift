@@ -15,9 +15,17 @@ struct ContentView: View {
             
             if viewModel.isLoading {
                 ProgressView()
+            } else if let error = viewModel.error {
+                ErrorView(
+                    message: error.localizedDescription,
+                    onReload: {
+                        Task {
+                            await viewModel.load()
+                        }
+                    }
+                )
             } else {
                 TabView {
-                    
                     StationListView(stations: viewModel.allStations, onStarChange: { viewModel.toggleStar(id: $0) })
                         .tabItem {
                             Label("Stations", systemImage: "house")

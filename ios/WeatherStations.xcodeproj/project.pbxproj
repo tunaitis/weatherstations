@@ -16,6 +16,8 @@
 		0047C2612B6F41D30039B04B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0047C2602B6F41D30039B04B /* Assets.xcassets */; };
 		0047C2642B6F41D30039B04B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0047C2632B6F41D30039B04B /* Preview Assets.xcassets */; };
 		0092CB6F2B7175A900A7E33F /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092CB6E2B7175A900A7E33F /* Station.swift */; };
+		00B1101D2B7CF13000BE5F8D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B1101C2B7CF13000BE5F8D /* ErrorView.swift */; };
+		00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B5D3A92B7BE26B00575D55 /* StationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		0047C2602B6F41D30039B04B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0047C2632B6F41D30039B04B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0092CB6E2B7175A900A7E33F /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		00B1101C2B7CF13000BE5F8D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		00B5D3A92B7BE26B00575D55 /* StationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,7 @@
 				0000E0B32B7A811900ADAB6A /* StationView.swift */,
 				004569262B7A945400FEEC44 /* StationListView.swift */,
 				004569282B7A948600FEEC44 /* StationMapView.swift */,
+				00B1101C2B7CF13000BE5F8D /* ErrorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -71,8 +76,8 @@
 		0047C25B2B6F41D20039B04B /* WeatherStations */ = {
 			isa = PBXGroup;
 			children = (
-				0000E0B22B7A80F300ADAB6A /* Components */,
 				0092CB6D2B71759500A7E33F /* Models */,
+				00B5D3A82B7BE24F00575D55 /* Services */,
 				00EAA0AC2B7954590081C1FF /* Views */,
 				0047C25C2B6F41D20039B04B /* WeatherStationsApp.swift */,
 				0047C2602B6F41D30039B04B /* Assets.xcassets */,
@@ -97,9 +102,18 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		00B5D3A82B7BE24F00575D55 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				00B5D3A92B7BE26B00575D55 /* StationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		00EAA0AC2B7954590081C1FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0000E0B22B7A80F300ADAB6A /* Components */,
 				0047C25E2B6F41D20039B04B /* ContentView.swift */,
 				0000E0B52B7A813300ADAB6A /* ViewModel.swift */,
 			);
@@ -179,7 +193,9 @@
 				004569292B7A948600FEEC44 /* StationMapView.swift in Sources */,
 				0000E0B62B7A813300ADAB6A /* ViewModel.swift in Sources */,
 				004569272B7A945400FEEC44 /* StationListView.swift in Sources */,
+				00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */,
 				0047C25F2B6F41D20039B04B /* ContentView.swift in Sources */,
+				00B1101D2B7CF13000BE5F8D /* ErrorView.swift in Sources */,
 				0000E0B42B7A811900ADAB6A /* StationView.swift in Sources */,
 				0092CB6F2B7175A900A7E33F /* Station.swift in Sources */,
 				0047C25D2B6F41D20039B04B /* WeatherStationsApp.swift in Sources */,
