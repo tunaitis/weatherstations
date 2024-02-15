@@ -60,6 +60,7 @@ class ViewModel : ObservableObject {
                 }
                 
                 self?.allStations = stations
+                self?.settingsRepository.setStarredStations(stations: ids)
             }
             .store(in: &cancellable)
         
@@ -89,7 +90,5 @@ class ViewModel : ObservableObject {
         } else {
             starredIds.append(id)
         }
-        
-        settingsRepository.setStarredStations(stations: starredIds)
     }
 }
