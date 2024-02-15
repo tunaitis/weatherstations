@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewModel = ViewModel()
+    @State var s = ""
     
     var body: some View {
-        NavigationStack {
-            
+        VStack {
             if viewModel.isLoading {
                 ProgressView()
             } else if let error = viewModel.error {
@@ -26,15 +26,24 @@ struct ContentView: View {
                 )
             } else {
                 TabView {
-                    StationListView(stations: viewModel.allStations, onStarChange: { viewModel.toggleStar(id: $0) })
-                        .tabItem {
-                            Label("Stations", systemImage: "house")
-                        }
+                    NavigationView {
+                        StationListView(stations: viewModel.stations, onStarChange: { viewModel.toggleStar(id: $0) })
+                            .navigationTitle("All Stations")
+                            .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
+                    }
+                    .tabItem {
+                        Label("Stations", systemImage: "house")
+                    }
                     
-                    StationListView(stations: viewModel.starredStations, onStarChange: { viewModel.toggleStar(id: $0) })
-                        .tabItem {
-                            Label("Starred", systemImage: "star")
-                        }
+                    NavigationView {
+                        
+                        StationListView(stations: viewModel.starredStations, onStarChange: { viewModel.toggleStar(id: $0) })
+                            .navigationTitle("Starred Stations")
+                            .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
+                    }
+                    .tabItem {
+                        Label("Starred", systemImage: "star")
+                    }
                     
                     StationMapView()
                         .tabItem {

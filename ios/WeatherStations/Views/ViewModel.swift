@@ -7,17 +7,62 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 class ViewModel : ObservableObject {
     let stationService = StationService()
+    let settingsRepository = SettingsRepository()
     
     @Published var isLoading = true
-    @Published var allStations: [Station] = []
+    @Published private var allStations: [Station] = []
+    @Published private(set) var stations: [Station] = []
+    @Published private(set) var starredStations: [Station] = []
+    @Published private(set) var starredIds: [String] = []
+    
+    @Published var searchQuery = ""
     
     @Published var error: Error? = nil
     
-    var starredStations: [Station] {
-        allStations.filter { $0.isStarred }
+    private var cancellable = Set<AnyCancellable>()
+    
+    init() {
+        $searchQuery
+            .combineLatest($allStations)
+            .debounce(for: .milliseconds(80), scheduler: RunLoop.main)
+            .sink { [weak self] (search, stations) in
+                if search.isEmpty {
+                    self?.stations = stations
+                    self?.starredStations = stations.filter { $0.isStarred }
+                    return
+                }
+                
+                let search = search.lowercased()
+                
+                self?.stations = stations.filter { $0.name.lowercased().contains(search)}
+                self?.starredStations = stations.filter { $0.isStarred && $0.name.lowercased().contains(search) }
+            }
+            .store(in: &cancellable)
+        
+        
+        $allStations
+            .sink { [weak self] (stations) in
+                self?.starredStations = stations.filter { $0.isStarred }
+            }
+            .store(in: &cancellable)
+        
+        $starredIds
+            .combineLatest($allStations)
+            .sink { [weak self] (ids, stations) in
+                let stations = stations.map {
+                    var station = $0
+                    station.isStarred = ids.contains(station.id)
+                    return station
+                }
+                
+                self?.allStations = stations
+            }
+            .store(in: &cancellable)
+        
     }
     
     @MainActor
@@ -28,9 +73,9 @@ class ViewModel : ObservableObject {
         let result = await stationService.getStations()
         
         switch result {
-        case .success(let x):
-            allStations = x
-            
+        case .success(let stations):
+            allStations = stations
+            starredIds = settingsRepository.getStarredStations()
         case .failure(let e):
             error = e
         }
@@ -39,8 +84,12 @@ class ViewModel : ObservableObject {
     }
     
     func toggleStar(id: String) {
-        if let index = allStations.firstIndex(where: { $0.id == id }) {
-            allStations[index].isStarred.toggle()
+        if starredIds.contains(id) {
+            starredIds = starredIds.filter { $0 != id }
+        } else {
+            starredIds.append(id)
         }
+        
+        settingsRepository.setStarredStations(stations: starredIds)
     }
 }

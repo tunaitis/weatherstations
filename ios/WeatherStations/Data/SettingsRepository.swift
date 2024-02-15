@@ -2,7 +2,19 @@
 //  SettingsRepository.swift
 //  WeatherStations
 //
-//  Created by Simonas Tunaitis on 14/02/2024.
+//  Created by Simon Tunaitis on 14/02/2024.
 //
 
-import Foundation
+import SwiftUI
+
+class SettingsRepository {
+    @AppStorage("starredStations") private var starredStations = ""
+    
+    func getStarredStations() -> [String] {
+        return starredStations.split(separator: ",").map(String.init)
+    }
+    
+    func setStarredStations(stations: [String]) {
+        starredStations = stations.joined(separator: ",")
+    }
+}
