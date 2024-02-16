@@ -10,6 +10,10 @@ import SwiftUI
 import Combine
 
 class ViewModel : ObservableObject {
+    enum Route: Hashable {
+        case stationPhoto(String)
+    }
+    
     let stationService = StationService()
     let settingsRepository = SettingsRepository()
     
@@ -20,8 +24,9 @@ class ViewModel : ObservableObject {
     @Published private(set) var starredIds: [String] = []
     
     @Published var searchQuery = ""
-    
     @Published var error: Error? = nil
+    
+    @Published var navigationPath = NavigationPath()
     
     private var cancellable = Set<AnyCancellable>()
     
@@ -42,7 +47,6 @@ class ViewModel : ObservableObject {
                 self?.starredStations = stations.filter { $0.isStarred && $0.name.lowercased().contains(search) }
             }
             .store(in: &cancellable)
-        
         
         $allStations
             .sink { [weak self] (stations) in

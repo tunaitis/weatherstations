@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewModel = ViewModel()
-    @State var s = ""
     
     var body: some View {
         VStack {
@@ -25,30 +24,41 @@ struct ContentView: View {
                     }
                 )
             } else {
-                TabView {
-                    NavigationView {
-                        StationListView(stations: viewModel.stations, onStarChange: { viewModel.toggleStar(id: $0) })
-                            .navigationTitle("All Stations")
-                            .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
-                    }
-                    .tabItem {
-                        Label("Stations", systemImage: "house")
-                    }
-                    
-                    NavigationView {
-                        
-                        StationListView(stations: viewModel.starredStations, onStarChange: { viewModel.toggleStar(id: $0) })
-                            .navigationTitle("Starred Stations")
-                            .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
-                    }
-                    .tabItem {
-                        Label("Starred", systemImage: "star")
-                    }
-                    
-                    StationMapView()
+                NavigationStack(path: $viewModel.navigationPath) {
+                    TabView {
+                        StationListView(
+                            stations: viewModel.stations,
+                            onStarChange: { viewModel.toggleStar(id: $0) },
+                            onPhotoClick: { id in
+                                viewModel.navigationPath.append(ViewModel.Route.stationPhoto(id))
+                            }
+                        )
                         .tabItem {
-                            Label("Map", systemImage: "map")
+                            Label("Stations", systemImage: "house")
                         }
+                        
+                        StationListView(
+                            stations: viewModel.starredStations,
+                            onStarChange: { viewModel.toggleStar(id: $0) },
+                            onPhotoClick: { id in }
+                        )
+                        .tabItem {
+                            Label("Starred", systemImage: "star")
+                        }
+                        
+                        StationMapView()
+                            .tabItem {
+                                Label("Map", systemImage: "map")
+                            }
+                    }
+                    .navigationTitle("All Stations")
+                    .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
+                    .navigationDestination(for: ViewModel.Route.self) { route in
+                        switch (route) {
+                        case .stationPhoto(let id):
+                            Text("Station photo: \(id)")
+                        }
+                    }
                 }
             }
         }

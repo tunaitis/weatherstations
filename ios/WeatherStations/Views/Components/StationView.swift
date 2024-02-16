@@ -33,6 +33,7 @@ struct StationPropView: View {
 struct StationView: View {
     var station: Station
     var onStarChange: (String) -> Void
+    var onPhotoClick: (String) -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -86,6 +87,17 @@ struct StationView: View {
                         .foregroundStyle(.secondary)
                     Text(station.updated)
                         .font(.subheadline)
+                }
+                
+                Spacer()
+                
+                HStack {
+                    Button {
+                        onPhotoClick(station.id)
+                    }
+                    label: {
+                        Image(systemName: "photo")
+                    }.buttonStyle(.borderless)
                 }
             }
         }
