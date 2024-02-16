@@ -20,6 +20,8 @@
 		00B110202B7D081900BE5F8D /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B1101F2B7D081900BE5F8D /* SettingsRepository.swift */; };
 		00B110222B7D25EB00BE5F8D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B110212B7D25EB00BE5F8D /* SearchView.swift */; };
 		00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B5D3A92B7BE26B00575D55 /* StationService.swift */; };
+		00DBCCF72B7FC19E00EA5ADF /* StationPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBCCF62B7FC19E00EA5ADF /* StationPhotoView.swift */; };
+		00DBCCF92B7FC1DA00EA5ADF /* StationPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBCCF82B7FC1DA00EA5ADF /* StationPhotoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		00B1101F2B7D081900BE5F8D /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
 		00B110212B7D25EB00BE5F8D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		00B5D3A92B7BE26B00575D55 /* StationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationService.swift; sourceTree = "<group>"; };
+		00DBCCF62B7FC19E00EA5ADF /* StationPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPhotoView.swift; sourceTree = "<group>"; };
+		00DBCCF82B7FC1DA00EA5ADF /* StationPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPhotoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,8 @@
 				0000E0B22B7A80F300ADAB6A /* Components */,
 				0047C25E2B6F41D20039B04B /* MainView.swift */,
 				0000E0B52B7A813300ADAB6A /* MainViewModel.swift */,
+				00DBCCF62B7FC19E00EA5ADF /* StationPhotoView.swift */,
+				00DBCCF82B7FC1DA00EA5ADF /* StationPhotoViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,6 +210,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00DBCCF72B7FC19E00EA5ADF /* StationPhotoView.swift in Sources */,
+				00DBCCF92B7FC1DA00EA5ADF /* StationPhotoViewModel.swift in Sources */,
 				004569292B7A948600FEEC44 /* StationMapView.swift in Sources */,
 				0000E0B62B7A813300ADAB6A /* MainViewModel.swift in Sources */,
 				004569272B7A945400FEEC44 /* StationListView.swift in Sources */,

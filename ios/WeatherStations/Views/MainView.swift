@@ -56,7 +56,7 @@ struct MainView: View {
                     .navigationDestination(for: MainViewModel.Route.self) { route in
                         switch (route) {
                         case .stationPhoto(let id):
-                            Text("Station photo: \(id)")
+                            StationPhotoView(id: id)
                         }
                     }
                 }
