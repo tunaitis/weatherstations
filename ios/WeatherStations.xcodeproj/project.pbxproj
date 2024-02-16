@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0000E0B42B7A811900ADAB6A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000E0B32B7A811900ADAB6A /* StationView.swift */; };
-		0000E0B62B7A813300ADAB6A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000E0B52B7A813300ADAB6A /* ViewModel.swift */; };
+		0000E0B62B7A813300ADAB6A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000E0B52B7A813300ADAB6A /* MainViewModel.swift */; };
 		004569272B7A945400FEEC44 /* StationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004569262B7A945400FEEC44 /* StationListView.swift */; };
 		004569292B7A948600FEEC44 /* StationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004569282B7A948600FEEC44 /* StationMapView.swift */; };
 		0047C25D2B6F41D20039B04B /* WeatherStationsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0047C25C2B6F41D20039B04B /* WeatherStationsApp.swift */; };
-		0047C25F2B6F41D20039B04B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0047C25E2B6F41D20039B04B /* ContentView.swift */; };
+		0047C25F2B6F41D20039B04B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0047C25E2B6F41D20039B04B /* MainView.swift */; };
 		0047C2612B6F41D30039B04B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0047C2602B6F41D30039B04B /* Assets.xcassets */; };
 		0047C2642B6F41D30039B04B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0047C2632B6F41D30039B04B /* Preview Assets.xcassets */; };
 		0092CB6F2B7175A900A7E33F /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092CB6E2B7175A900A7E33F /* Station.swift */; };
@@ -24,12 +24,12 @@
 
 /* Begin PBXFileReference section */
 		0000E0B32B7A811900ADAB6A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
-		0000E0B52B7A813300ADAB6A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		0000E0B52B7A813300ADAB6A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		004569262B7A945400FEEC44 /* StationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListView.swift; sourceTree = "<group>"; };
 		004569282B7A948600FEEC44 /* StationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapView.swift; sourceTree = "<group>"; };
 		0047C2592B6F41D20039B04B /* WeatherStations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherStations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0047C25C2B6F41D20039B04B /* WeatherStationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationsApp.swift; sourceTree = "<group>"; };
-		0047C25E2B6F41D20039B04B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0047C25E2B6F41D20039B04B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0047C2602B6F41D30039B04B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0047C2632B6F41D30039B04B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0092CB6E2B7175A900A7E33F /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				0000E0B22B7A80F300ADAB6A /* Components */,
-				0047C25E2B6F41D20039B04B /* ContentView.swift */,
-				0000E0B52B7A813300ADAB6A /* ViewModel.swift */,
+				0047C25E2B6F41D20039B04B /* MainView.swift */,
+				0000E0B52B7A813300ADAB6A /* MainViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,11 +205,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				004569292B7A948600FEEC44 /* StationMapView.swift in Sources */,
-				0000E0B62B7A813300ADAB6A /* ViewModel.swift in Sources */,
+				0000E0B62B7A813300ADAB6A /* MainViewModel.swift in Sources */,
 				004569272B7A945400FEEC44 /* StationListView.swift in Sources */,
 				00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */,
 				00B110202B7D081900BE5F8D /* SettingsRepository.swift in Sources */,
-				0047C25F2B6F41D20039B04B /* ContentView.swift in Sources */,
+				0047C25F2B6F41D20039B04B /* MainView.swift in Sources */,
 				00B1101D2B7CF13000BE5F8D /* ErrorView.swift in Sources */,
 				0000E0B42B7A811900ADAB6A /* StationView.swift in Sources */,
 				0092CB6F2B7175A900A7E33F /* Station.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class ViewModel : ObservableObject {
+class MainViewModel : ObservableObject {
     enum Route: Hashable {
         case stationPhoto(String)
     }

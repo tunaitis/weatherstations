@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @StateObject var viewModel = ViewModel()
+struct MainView: View {
+    @StateObject var viewModel = MainViewModel()
     
     var body: some View {
         VStack {
@@ -30,7 +30,7 @@ struct ContentView: View {
                             stations: viewModel.stations,
                             onStarChange: { viewModel.toggleStar(id: $0) },
                             onPhotoClick: { id in
-                                viewModel.navigationPath.append(ViewModel.Route.stationPhoto(id))
+                                viewModel.navigationPath.append(MainViewModel.Route.stationPhoto(id))
                             }
                         )
                         .tabItem {
@@ -53,7 +53,7 @@ struct ContentView: View {
                     }
                     .navigationTitle("All Stations")
                     .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
-                    .navigationDestination(for: ViewModel.Route.self) { route in
+                    .navigationDestination(for: MainViewModel.Route.self) { route in
                         switch (route) {
                         case .stationPhoto(let id):
                             Text("Station photo: \(id)")
@@ -70,6 +70,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MainView()
 }
 
