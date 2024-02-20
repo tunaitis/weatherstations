@@ -17,7 +17,7 @@ class MainViewModel : ObservableObject {
     let stationService = StationService()
     let settingsRepository = SettingsRepository()
     
-    @Published var isLoading = true
+    @Published private(set) var isLoading = true
     @Published private var allStations: [Station] = []
     @Published private(set) var stations: [Station] = []
     @Published private(set) var starredStations: [Station] = []

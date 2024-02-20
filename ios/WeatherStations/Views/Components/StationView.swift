@@ -97,6 +97,7 @@ struct StationView: View {
                     }
                     label: {
                         Image(systemName: "photo")
+                            .foregroundColor(.secondary)
                     }.buttonStyle(.borderless)
                 }
             }
