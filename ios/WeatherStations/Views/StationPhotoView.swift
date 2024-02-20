@@ -16,15 +16,6 @@ struct StationPhotoView : View  {
         VStack {
             if viewModel.isLoading {
                 ProgressView()
-            } else if let error = viewModel.error {
-                ErrorView(
-                    message: error.localizedDescription,
-                    onReload: {
-                        Task {
-                            await viewModel.load(id: id)
-                        }
-                    }
-                )
             } else {
                 AsyncImage(url: URL(string: viewModel.photo)) { image in
                     image

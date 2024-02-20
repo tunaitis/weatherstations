@@ -28,7 +28,7 @@ struct MainView: View {
                     TabView {
                         StationListView(
                             stations: viewModel.stations,
-                            onStarChange: { viewModel.toggleStar(id: $0) },
+                            onStarClick: { viewModel.toggleStar(id: $0) },
                             onPhotoClick: { id in
                                 viewModel.navigationPath.append(MainViewModel.Route.stationPhoto(id))
                             }
@@ -39,7 +39,7 @@ struct MainView: View {
                         
                         StationListView(
                             stations: viewModel.starredStations,
-                            onStarChange: { viewModel.toggleStar(id: $0) },
+                            onStarClick: { viewModel.toggleStar(id: $0) },
                             onPhotoClick: { id in }
                         )
                         .tabItem {

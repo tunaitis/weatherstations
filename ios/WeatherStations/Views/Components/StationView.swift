@@ -32,7 +32,7 @@ struct StationPropView: View {
 
 struct StationView: View {
     var station: Station
-    var onStarChange: (String) -> Void
+    var onStarClick: (String) -> Void
     var onPhotoClick: (String) -> Void
     
     var body: some View {
@@ -49,7 +49,7 @@ struct StationView: View {
                 Spacer()
                 
                 Button {
-                    onStarChange(station.id)
+                    onStarClick(station.id)
                 }
                 label: {
                     Image(systemName: station.isStarred ? "star.fill" : "star")

@@ -10,7 +10,7 @@ import Foundation
 
 struct StationListView: View {
     var stations: [Station]
-    var onStarChange: (String) -> Void
+    var onStarClick: (String) -> Void
     var onPhotoClick: (String) -> Void
     
     var body: some View {
@@ -19,7 +19,7 @@ struct StationListView: View {
                 ForEach(stations) { station in
                     StationView(
                         station: station,
-                        onStarChange: onStarChange,
+                        onStarClick: onStarClick,
                         onPhotoClick: onPhotoClick
                     )
                 }
