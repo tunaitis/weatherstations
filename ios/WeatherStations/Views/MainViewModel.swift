@@ -26,8 +26,6 @@ class MainViewModel : ObservableObject {
     @Published var searchQuery = ""
     @Published var error: Error? = nil
     
-    @Published var navigationPath = NavigationPath()
-    
     private var cancellable = Set<AnyCancellable>()
     
     init() {

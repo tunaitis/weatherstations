@@ -8,7 +8,16 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    enum Sheet: Hashable, Identifiable {
+        case showPhoto(String)
+        case showHistory
+        
+        var id: Self { return self }
+    }
+    
     @StateObject var viewModel = MainViewModel()
+    @State var presentedSheet: Sheet?
     
     var body: some View {
         VStack {
@@ -24,40 +33,57 @@ struct MainView: View {
                     }
                 )
             } else {
-                NavigationStack(path: $viewModel.navigationPath) {
-                    TabView {
+                TabView {
+                    NavigationStack {
                         StationListView(
                             stations: viewModel.stations,
                             onStarClick: { viewModel.toggleStar(id: $0) },
                             onPhotoClick: { id in
-                                viewModel.navigationPath.append(MainViewModel.Route.stationPhoto(id))
+                                presentedSheet = Sheet.showPhoto(id)
                             }
                         )
-                        .tabItem {
-                            Label("Stations", systemImage: "house")
-                        }
-                        
+                        .navigationTitle("Stations")
+                        .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
+                    }
+                    .tabItem {
+                        Label("Stations", systemImage: "house")
+                    }
+                    
+                    
+                    NavigationStack {
                         StationListView(
                             stations: viewModel.starredStations,
                             onStarClick: { viewModel.toggleStar(id: $0) },
-                            onPhotoClick: { id in }
+                            onPhotoClick: { id in
+                                presentedSheet = Sheet.showPhoto(id)
+                            }
                         )
-                        .tabItem {
-                            Label("Starred", systemImage: "star")
+                        .navigationTitle("Starred")
+                        .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
+                    }
+                    .tabItem {
+                        Label("Starred", systemImage: "star")
+                    }
+                    
+                    StationMapView()
+                    .tabItem {
+                        Label("Map", systemImage: "map")
+                    }
+                }
+                .sheet(item: $presentedSheet) { sheet in
+                    switch sheet {
+                    case .showPhoto(let id):
+                        if let station = viewModel.stations.first(where: { $0.id == id }) {
+                            StationPhotoView(
+                                station: station,
+                                onCloseClick: {
+                                    presentedSheet = nil
+                                }
+                            )
                         }
                         
-                        StationMapView()
-                            .tabItem {
-                                Label("Map", systemImage: "map")
-                            }
-                    }
-                    .navigationTitle("All Stations")
-                    .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
-                    .navigationDestination(for: MainViewModel.Route.self) { route in
-                        switch (route) {
-                        case .stationPhoto(let id):
-                            StationPhotoView(id: id)
-                        }
+                    case .showHistory:
+                        Text("History")
                     }
                 }
             }

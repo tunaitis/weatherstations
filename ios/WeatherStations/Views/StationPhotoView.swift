@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 struct StationPhotoView : View  {
-    var id: String
+    var station: Station
+    var onCloseClick: () -> Void
+    
     @StateObject var viewModel = StationPhotoViewModel()
     
     var body: some View {
@@ -17,17 +19,26 @@ struct StationPhotoView : View  {
             if viewModel.isLoading {
                 ProgressView()
             } else {
-                AsyncImage(url: URL(string: viewModel.photo)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } placeholder: {
-                    ProgressView()
+                NavigationStack {
+                    VStack {
+                        AsyncImage(url: URL(string: viewModel.photo)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } placeholder: {
+                            ProgressView()
+                        }
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationTitle(station.name)
+                    .toolbar {
+                        Button("Close", action: onCloseClick)
+                    }
                 }
             }
         }
         .task {
-            await viewModel.load(id: id)
+            await viewModel.load(id: station.id)
         }
     }
 }
