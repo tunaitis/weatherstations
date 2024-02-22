@@ -46,12 +46,6 @@ class MainViewModel : ObservableObject {
             }
             .store(in: &cancellable)
         
-        $allStations
-            .sink { [weak self] (stations) in
-                self?.starredStations = stations.filter { $0.isStarred }
-            }
-            .store(in: &cancellable)
-        
         $starredIds
             .combineLatest($allStations)
             .sink { [weak self] (ids, stations) in
@@ -62,10 +56,9 @@ class MainViewModel : ObservableObject {
                 }
                 
                 self?.allStations = stations
-                self?.settingsRepository.setStarredStations(stations: ids)
+                self?.starredStations = stations.filter { $0.isStarred }
             }
             .store(in: &cancellable)
-        
     }
     
     @MainActor
@@ -79,6 +72,7 @@ class MainViewModel : ObservableObject {
         case .success(let stations):
             allStations = stations
             starredIds = settingsRepository.getStarredStations()
+        
         case .failure(let e):
             error = e
         }
@@ -92,5 +86,7 @@ class MainViewModel : ObservableObject {
         } else {
             starredIds.append(id)
         }
+        
+        settingsRepository.setStarredStations(stations: starredIds)
     }
 }
