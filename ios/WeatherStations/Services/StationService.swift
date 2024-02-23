@@ -52,6 +52,7 @@ class StationService {
             
             return .success(decodedResponse)
         } catch {
+            print(error)
             return .failure(error)
         }
     }

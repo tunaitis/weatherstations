@@ -18,6 +18,7 @@ struct MainView: View {
     
     @StateObject var viewModel = MainViewModel()
     @State var presentedSheet: Sheet?
+    @State var selectedOption: String = "Aaa"
     
     var body: some View {
         VStack {
@@ -65,7 +66,9 @@ struct MainView: View {
                         Label("Starred", systemImage: "star")
                     }
                     
-                    StationMapView()
+                    StationMapView(
+                        stations: viewModel.stations
+                    )
                     .tabItem {
                         Label("Map", systemImage: "map")
                     }

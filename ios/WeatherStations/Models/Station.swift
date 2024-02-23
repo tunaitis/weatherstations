@@ -21,6 +21,8 @@ struct Station: Identifiable {
     var windDirection: String?
     var roadSurface: String?
     var visibility: String?
+    var latitude: String?
+    var longitude: String?
     
 }
 
@@ -38,5 +40,7 @@ extension Station : Decodable {
         case windDirection = "vejo_kryptis"
         case roadSurface = "kelio_danga"
         case visibility = "matomumas"
+        case latitude = "lat"
+        case longitude = "lng"
     }
 }
