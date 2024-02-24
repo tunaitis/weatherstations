@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+struct GeometryContentSize<Content: View>: View {
+    public var content: (CGSize) -> Content
+    
+    var body: some View {
+        GeometryReader { geo in
+            content(geo.size)
+        }.frame(height: 200)
+    }
+}
+
 struct MainView: View {
     
     enum Sheet: Hashable, Identifiable {
@@ -19,6 +29,8 @@ struct MainView: View {
     @StateObject var viewModel = MainViewModel()
     @State var presentedSheet: Sheet?
     @State var selectedOption: String = "Aaa"
+    @State var selectedMapStation: String?
+    @State private var size: CGSize = .zero
     
     var body: some View {
         VStack {
@@ -67,10 +79,24 @@ struct MainView: View {
                     }
                     
                     StationMapView(
-                        stations: viewModel.stations
+                        stations: viewModel.stations,
+                        selection: $selectedMapStation
                     )
                     .tabItem {
                         Label("Map", systemImage: "map")
+                    }
+                }
+                .sheet(item: $selectedMapStation) { id in
+                    if let station = viewModel.stations.first(where: { $0.id == id }) {
+                        StationView(
+                            station: station,
+                            onStarClick: { viewModel.toggleStar(id: $0) },
+                            onPhotoClick: { id in
+                                selectedMapStation = nil
+                                presentedSheet = Sheet.showPhoto(id)
+                            }
+                        )
+                        .autoHeight()
                     }
                 }
                 .sheet(item: $presentedSheet) { sheet in

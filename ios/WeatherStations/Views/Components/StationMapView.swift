@@ -8,14 +8,29 @@
 import SwiftUI
 import MapKit
 
+struct SizePreferenceKey: PreferenceKey {
+    static var defaultValue: CGSize = .zero
+    static func reduce(value: inout CGSize, nextValue: () -> CGSize) { value = nextValue() }
+}
 
 struct StationMapView : View {
     let stations: [Station]
-    let lt = CLLocationCoordinate2D(latitude: 55.1735, longitude: 23.8948)
-    let zoom = 6.5
+    @Binding var selection: String?
+    
+    static let lt = CLLocationCoordinate2D(latitude: 55.1735, longitude: 23.8948)
+    static let zoom = 6.0
+    let initialPosition = MapCameraPosition.region(
+        MKCoordinateRegion(
+            center: lt,
+            span: MKCoordinateSpan(
+                latitudeDelta: zoom,
+                longitudeDelta: zoom
+            )
+        )
+    )
     
     var body: some View {
-        Map(initialPosition: .region(MKCoordinateRegion(center: lt, span: MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom)))) {
+        Map(initialPosition: initialPosition, selection: $selection) {
             ForEach(stations) { station in
                 if let lat = Double(station.latitude ?? ""), let lng = Double(station.longitude ?? "") {
                     Marker(station.name, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lng))

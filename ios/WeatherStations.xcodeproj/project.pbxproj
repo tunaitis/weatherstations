@@ -22,6 +22,8 @@
 		00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B5D3A92B7BE26B00575D55 /* StationService.swift */; };
 		00DBCCF72B7FC19E00EA5ADF /* StationPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBCCF62B7FC19E00EA5ADF /* StationPhotoView.swift */; };
 		00DBCCF92B7FC1DA00EA5ADF /* StationPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBCCF82B7FC1DA00EA5ADF /* StationPhotoViewModel.swift */; };
+		00E04F532B8A1A21005E6935 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F522B8A1A21005E6935 /* String.swift */; };
+		00E04F562B8A47A0005E6935 /* AutoHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F552B8A47A0005E6935 /* AutoHeightView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		00B5D3A92B7BE26B00575D55 /* StationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationService.swift; sourceTree = "<group>"; };
 		00DBCCF62B7FC19E00EA5ADF /* StationPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPhotoView.swift; sourceTree = "<group>"; };
 		00DBCCF82B7FC1DA00EA5ADF /* StationPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPhotoViewModel.swift; sourceTree = "<group>"; };
+		00E04F522B8A1A21005E6935 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		00E04F552B8A47A0005E6935 /* AutoHeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoHeightView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 		0000E0B22B7A80F300ADAB6A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				00E04F552B8A47A0005E6935 /* AutoHeightView.swift */,
 				0000E0B32B7A811900ADAB6A /* StationView.swift */,
 				004569262B7A945400FEEC44 /* StationListView.swift */,
 				004569282B7A948600FEEC44 /* StationMapView.swift */,
@@ -85,6 +90,7 @@
 		0047C25B2B6F41D20039B04B /* WeatherStations */ = {
 			isa = PBXGroup;
 			children = (
+				00E04F512B8A1A16005E6935 /* Extensions */,
 				00B1101E2B7D081200BE5F8D /* Data */,
 				0092CB6D2B71759500A7E33F /* Models */,
 				00B5D3A82B7BE24F00575D55 /* Services */,
@@ -126,6 +132,14 @@
 				00B5D3A92B7BE26B00575D55 /* StationService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		00E04F512B8A1A16005E6935 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				00E04F522B8A1A21005E6935 /* String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		00EAA0AC2B7954590081C1FF /* Views */ = {
@@ -214,6 +228,7 @@
 				00DBCCF92B7FC1DA00EA5ADF /* StationPhotoViewModel.swift in Sources */,
 				004569292B7A948600FEEC44 /* StationMapView.swift in Sources */,
 				0000E0B62B7A813300ADAB6A /* MainViewModel.swift in Sources */,
+				00E04F532B8A1A21005E6935 /* String.swift in Sources */,
 				004569272B7A945400FEEC44 /* StationListView.swift in Sources */,
 				00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */,
 				00B110202B7D081900BE5F8D /* SettingsRepository.swift in Sources */,
@@ -221,6 +236,7 @@
 				00B1101D2B7CF13000BE5F8D /* ErrorView.swift in Sources */,
 				0000E0B42B7A811900ADAB6A /* StationView.swift in Sources */,
 				0092CB6F2B7175A900A7E33F /* Station.swift in Sources */,
+				00E04F562B8A47A0005E6935 /* AutoHeightView.swift in Sources */,
 				0047C25D2B6F41D20039B04B /* WeatherStationsApp.swift in Sources */,
 				00B110222B7D25EB00BE5F8D /* SearchView.swift in Sources */,
 			);
