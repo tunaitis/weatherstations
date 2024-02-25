@@ -11,8 +11,9 @@ import Combine
 import CoreLocation
 
 class MainViewModel : ObservableObject {
-    enum Route: Hashable {
-        case stationPhoto(String)
+    enum StationListSort {
+        case Alphabetical
+        case Distance
     }
     
     let stationService = StationService()
@@ -20,10 +21,19 @@ class MainViewModel : ObservableObject {
     let locationService = LocationService()
     
     @Published private(set) var isLoading = true
-    @Published private var allStations: [Station] = []
     @Published private(set) var stations: [Station] = []
-    @Published private(set) var starredStations: [Station] = []
+    @Published private(set) var filteredStations: [Station] = []
+    
+    var starredStations: [Station] {
+        return stations.filter { $0.isStarred }
+    }
+    
+    var filteredStarredStations: [Station] {
+        return filteredStations.filter { $0.isStarred }
+    }
+    
     @Published private(set) var starredIds: [String] = []
+    @Published var sort: StationListSort = StationListSort.Alphabetical
     
     @Published var searchQuery = ""
     @Published var error: Error? = nil
@@ -31,25 +41,26 @@ class MainViewModel : ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     init() {
+        
         $searchQuery
-            .combineLatest($allStations)
+            .combineLatest($stations)
             .debounce(for: .milliseconds(80), scheduler: RunLoop.main)
+            .filter { (search, stations) in
+                return !search.isEmpty
+            }
             .sink { [weak self] (search, stations) in
                 if search.isEmpty {
-                    self?.stations = stations
-                    self?.starredStations = stations.filter { $0.isStarred }
+                    self?.filteredStations = []
                     return
                 }
                 
                 let search = search.lowercased()
-                
-                self?.stations = stations.filter { $0.name.lowercased().contains(search)}
-                self?.starredStations = stations.filter { $0.isStarred && $0.name.lowercased().contains(search) }
+                self?.filteredStations = stations.filter { $0.name.lowercased().contains(search)}
             }
             .store(in: &cancellable)
         
         $starredIds
-            .combineLatest($allStations)
+            .combineLatest($stations)
             .sink { [weak self] (ids, stations) in
                 let stations = stations.map {
                     var station = $0
@@ -57,13 +68,12 @@ class MainViewModel : ObservableObject {
                     return station
                 }
                 
-                self?.allStations = stations
-                self?.starredStations = stations.filter { $0.isStarred }
+                self?.stations = stations
             }
             .store(in: &cancellable)
         
         locationService.$location
-            .combineLatest($allStations)
+            .combineLatest($stations)
             .filter { (loc, stations) in
                 return loc != nil && !stations.isEmpty
             }
@@ -80,8 +90,23 @@ class MainViewModel : ObservableObject {
                     return station
                 }
                 
-                self?.allStations = stations
-                self?.starredStations = stations.filter { $0.isStarred }
+                self?.stations = stations
+            }
+            .store(in: &cancellable)
+        
+        $sort
+            .combineLatest($stations)
+            .sink { [weak self] (sort, stations) in
+                print("updating sort")
+                if let self = self {
+                    if sort == StationListSort.Alphabetical {
+                        self.stations = stations.sorted { $0.name < $1.name }
+                    }
+                    
+                    if sort == StationListSort.Distance {
+                        self.stations = stations.sorted { $0.distance < $1.distance }
+                    }
+                }
             }
             .store(in: &cancellable)
     }
@@ -99,9 +124,9 @@ class MainViewModel : ObservableObject {
         
         switch result {
         case .success(let stations):
-            allStations = stations
+            self.stations = stations
             starredIds = settingsRepository.getStarredStations()
-        
+            
         case .failure(let e):
             error = e
         }

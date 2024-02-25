@@ -49,7 +49,7 @@ struct MainView: View {
                 TabView {
                     NavigationStack {
                         StationListView(
-                            stations: viewModel.stations,
+                            stations: viewModel.searchQuery.isEmpty ? viewModel.stations : viewModel.filteredStations,
                             onStarClick: { viewModel.toggleStar(id: $0) },
                             onHistoryClick: { id in
                                 presentedSheet = Sheet.showHistory(id)
@@ -60,6 +60,18 @@ struct MainView: View {
                         )
                         .navigationTitle("Stations")
                         .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Menu {
+                                    Picker("Foo", selection: $viewModel.sort) {
+                                        Text("A-Z").tag(MainViewModel.StationListSort.Alphabetical)
+                                        Text("Distance").tag(MainViewModel.StationListSort.Distance)
+                                    }
+                                } label: {
+                                    Image(systemName: "line.3.horizontal.decrease")
+                                }
+                            }
+                        }
                     }
                     .tabItem {
                         Label("Stations", systemImage: "house")
@@ -68,7 +80,7 @@ struct MainView: View {
                     
                     NavigationStack {
                         StationListView(
-                            stations: viewModel.starredStations,
+                            stations: viewModel.searchQuery.isEmpty ? viewModel.starredStations : viewModel.filteredStarredStations,
                             onStarClick: { viewModel.toggleStar(id: $0) },
                             onHistoryClick: { id in
                                 presentedSheet = Sheet.showHistory(id)
