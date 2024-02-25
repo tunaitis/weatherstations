@@ -33,10 +33,11 @@ struct StationPropView: View {
 struct StationView: View {
     var station: Station
     var onStarClick: (String) -> Void
+    var onHistoryClick: (String) -> Void
     var onPhotoClick: (String) -> Void
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 15) {
             HStack {
                 VStack(alignment: .leading) {
                     Text(station.name)
@@ -56,28 +57,28 @@ struct StationView: View {
                 }.buttonStyle(.borderless)
             }
             
-            HStack {
-                StationPropView(name: "Temperature", value: "\(station.temperature ?? "") °C")
-                StationPropView(name: "Precipitation", value: "\(station.precipitation ?? "") mm")
-                StationPropView(name: "Road Surface", value: "\(station.roadSurface ?? "")")
+            VStack {
+                HStack {
+                    StationPropView(name: "Temperature", value: "\(station.temperature ?? "") °C")
+                    StationPropView(name: "Precipitation", value: "\(station.precipitation ?? "") mm")
+                    StationPropView(name: "Road Surface", value: "\(station.roadSurface ?? "")")
+                }
+                .frame(maxWidth: .infinity)
+                
+                HStack {
+                    StationPropView(name: "Wind", value: "\(station.windAverage ?? "") m/s")
+                    StationPropView(name: "Wind Max", value: "\(station.windMax ?? "") m/m")
+                    StationPropView(name: "Wind Direction", value: "\(station.windDirection ?? "")")
+                }
+                .frame(maxWidth: .infinity)
+                
+                HStack {
+                    StationPropView(name: "Visibility", value: "\(station.visibility ?? "") m")
+                    StationPropView(name: "Dew Point", value: "\(station.temperature ?? "") °C")
+                    StationPropView(name: "Road Surface", value: "\(station.roadSurface ?? "")")
+                }
+                .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
-            
-            HStack {
-                StationPropView(name: "Wind", value: "\(station.windAverage ?? "") m/s")
-                StationPropView(name: "Wind Max", value: "\(station.windMax ?? "") m/m")
-                StationPropView(name: "Wind Direction", value: "\(station.windDirection ?? "")")
-            }
-            .frame(maxWidth: .infinity)
-            
-            HStack {
-                StationPropView(name: "Visibility", value: "\(station.visibility ?? "") m")
-                StationPropView(name: "Dew Point", value: "\(station.temperature ?? "") °C")
-                StationPropView(name: "Road Surface", value: "\(station.roadSurface ?? "")")
-            }
-            .frame(maxWidth: .infinity)
-            
-            Spacer()
             
             HStack() {
                 
@@ -91,7 +92,16 @@ struct StationView: View {
                 
                 Spacer()
                 
-                HStack {
+                HStack(spacing: 15) {
+                    Button {
+                        onHistoryClick(station.id)
+                    }
+                    label: {
+                        Image(systemName: "clock.arrow.circlepath")
+                            .foregroundColor(.secondary)
+                    }.buttonStyle(.borderless)
+                    
+                    
                     Button {
                         onPhotoClick(station.id)
                     }

@@ -21,7 +21,7 @@ struct MainView: View {
     
     enum Sheet: Hashable, Identifiable {
         case showPhoto(String)
-        case showHistory
+        case showHistory(String)
         
         var id: Self { return self }
     }
@@ -51,6 +51,9 @@ struct MainView: View {
                         StationListView(
                             stations: viewModel.stations,
                             onStarClick: { viewModel.toggleStar(id: $0) },
+                            onHistoryClick: { id in
+                                presentedSheet = Sheet.showHistory(id)
+                            },
                             onPhotoClick: { id in
                                 presentedSheet = Sheet.showPhoto(id)
                             }
@@ -67,6 +70,9 @@ struct MainView: View {
                         StationListView(
                             stations: viewModel.starredStations,
                             onStarClick: { viewModel.toggleStar(id: $0) },
+                            onHistoryClick: { id in
+                                presentedSheet = Sheet.showHistory(id)
+                            },
                             onPhotoClick: { id in
                                 presentedSheet = Sheet.showPhoto(id)
                             }
@@ -91,6 +97,9 @@ struct MainView: View {
                         StationView(
                             station: station,
                             onStarClick: { viewModel.toggleStar(id: $0) },
+                            onHistoryClick: { id in
+                                presentedSheet = Sheet.showHistory(id)
+                            },
                             onPhotoClick: { id in
                                 selectedMapStation = nil
                                 presentedSheet = Sheet.showPhoto(id)

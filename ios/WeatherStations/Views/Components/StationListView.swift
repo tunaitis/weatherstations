@@ -11,6 +11,7 @@ import Foundation
 struct StationListView: View {
     var stations: [Station]
     var onStarClick: (String) -> Void
+    var onHistoryClick: (String) -> Void
     var onPhotoClick: (String) -> Void
     
     var body: some View {
@@ -20,6 +21,7 @@ struct StationListView: View {
                     StationView(
                         station: station,
                         onStarClick: onStarClick,
+                        onHistoryClick: onHistoryClick,
                         onPhotoClick: onPhotoClick
                     )
                 }
