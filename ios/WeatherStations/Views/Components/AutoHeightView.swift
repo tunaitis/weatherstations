@@ -29,6 +29,7 @@ struct AutoHeightView<Content>: View where Content: View {
                 }
             }
             .onPreferenceChange(SizePreferenceKey.self) { newSize in
+                let _ = print(newSize.height)
                 size.height = newSize.height
             }
             .padding(.horizontal)

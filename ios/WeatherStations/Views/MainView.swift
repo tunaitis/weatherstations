@@ -110,6 +110,7 @@ struct MainView: View {
                             station: station,
                             onStarClick: { viewModel.toggleStar(id: $0) },
                             onHistoryClick: { id in
+                                selectedMapStation = nil
                                 presentedSheet = Sheet.showHistory(id)
                             },
                             onPhotoClick: { id in
@@ -117,7 +118,10 @@ struct MainView: View {
                                 presentedSheet = Sheet.showPhoto(id)
                             }
                         )
-                        .autoHeight()
+                        .padding()
+                        .presentationDragIndicator(.visible)
+                        .presentationDetents([.medium])
+                        .frame(maxHeight: .infinity, alignment: .top)
                     }
                 }
                 .sheet(item: $presentedSheet) { sheet in
