@@ -42,6 +42,20 @@ class StationService {
             return .failure(error)
         }
     }
+   
+    func getHistoricalData(id: String) async -> Result<[Station], Error> {
+        let url = URL(string: "https://eismoinfo.lt/weather-conditions-retrospective?id=\(id)&number=500")
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url!)
+            let decodedResponse = try JSONDecoder().decode([Station].self, from: data)
+            
+            return .success(decodedResponse)
+        } catch {
+            print(error)
+            return .failure(error)
+        }
+    }
     
     func getStations() async -> Result<[Station], Error> {
         let url = URL(string: "https://eismoinfo.lt/weather-conditions-service")

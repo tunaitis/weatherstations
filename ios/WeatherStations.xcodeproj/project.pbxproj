@@ -24,6 +24,8 @@
 		00DBCCF92B7FC1DA00EA5ADF /* StationPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBCCF82B7FC1DA00EA5ADF /* StationPhotoViewModel.swift */; };
 		00E04F532B8A1A21005E6935 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F522B8A1A21005E6935 /* String.swift */; };
 		00E04F562B8A47A0005E6935 /* AutoHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F552B8A47A0005E6935 /* AutoHeightView.swift */; };
+		00E04F582B8B30D1005E6935 /* StationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F572B8B30D1005E6935 /* StationHistoryView.swift */; };
+		00E04F5A2B8B3129005E6935 /* StationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F592B8B3129005E6935 /* StationHistoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		00DBCCF82B7FC1DA00EA5ADF /* StationPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPhotoViewModel.swift; sourceTree = "<group>"; };
 		00E04F522B8A1A21005E6935 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		00E04F552B8A47A0005E6935 /* AutoHeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoHeightView.swift; sourceTree = "<group>"; };
+		00E04F572B8B30D1005E6935 /* StationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationHistoryView.swift; sourceTree = "<group>"; };
+		00E04F592B8B3129005E6935 /* StationHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationHistoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 				0000E0B52B7A813300ADAB6A /* MainViewModel.swift */,
 				00DBCCF62B7FC19E00EA5ADF /* StationPhotoView.swift */,
 				00DBCCF82B7FC1DA00EA5ADF /* StationPhotoViewModel.swift */,
+				00E04F572B8B30D1005E6935 /* StationHistoryView.swift */,
+				00E04F592B8B3129005E6935 /* StationHistoryViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00DBCCF72B7FC19E00EA5ADF /* StationPhotoView.swift in Sources */,
+				00E04F5A2B8B3129005E6935 /* StationHistoryViewModel.swift in Sources */,
 				00DBCCF92B7FC1DA00EA5ADF /* StationPhotoViewModel.swift in Sources */,
 				004569292B7A948600FEEC44 /* StationMapView.swift in Sources */,
 				0000E0B62B7A813300ADAB6A /* MainViewModel.swift in Sources */,
@@ -232,6 +239,7 @@
 				004569272B7A945400FEEC44 /* StationListView.swift in Sources */,
 				00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */,
 				00B110202B7D081900BE5F8D /* SettingsRepository.swift in Sources */,
+				00E04F582B8B30D1005E6935 /* StationHistoryView.swift in Sources */,
 				0047C25F2B6F41D20039B04B /* MainView.swift in Sources */,
 				00B1101D2B7CF13000BE5F8D /* ErrorView.swift in Sources */,
 				0000E0B42B7A811900ADAB6A /* StationView.swift in Sources */,

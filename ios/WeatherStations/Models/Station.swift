@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Station: Identifiable {
+struct Station: Identifiable, Equatable {
     var id: String
     var name: String
     var road: String

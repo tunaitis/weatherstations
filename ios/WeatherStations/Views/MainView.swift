@@ -120,8 +120,15 @@ struct MainView: View {
                             )
                         }
                         
-                    case .showHistory:
-                        Text("History")
+                    case .showHistory(let id):
+                        if let station = viewModel.stations.first(where: { $0.id == id }) {
+                            StationHistoryView(
+                                station: station,
+                                onCloseClick: {
+                                    presentedSheet = nil
+                                }
+                            )
+                        }
                     }
                 }
             }
