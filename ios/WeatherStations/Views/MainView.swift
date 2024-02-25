@@ -149,7 +149,7 @@ struct MainView: View {
             await viewModel.load()
         }
         .task {
-            await viewModel.updateLocation()
+            viewModel.updateLocation()
         }
     }
     
