@@ -23,6 +23,7 @@ struct Station: Identifiable, Equatable {
     var visibility: String?
     var latitude: String?
     var longitude: String?
+    var distance: Double = 0
     
 }
 

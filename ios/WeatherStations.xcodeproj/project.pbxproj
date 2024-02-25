@@ -26,6 +26,7 @@
 		00E04F562B8A47A0005E6935 /* AutoHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F552B8A47A0005E6935 /* AutoHeightView.swift */; };
 		00E04F582B8B30D1005E6935 /* StationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F572B8B30D1005E6935 /* StationHistoryView.swift */; };
 		00E04F5A2B8B3129005E6935 /* StationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F592B8B3129005E6935 /* StationHistoryViewModel.swift */; };
+		00E04F5C2B8B8644005E6935 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F5B2B8B8644005E6935 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		00E04F552B8A47A0005E6935 /* AutoHeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoHeightView.swift; sourceTree = "<group>"; };
 		00E04F572B8B30D1005E6935 /* StationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationHistoryView.swift; sourceTree = "<group>"; };
 		00E04F592B8B3129005E6935 /* StationHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationHistoryViewModel.swift; sourceTree = "<group>"; };
+		00E04F5B2B8B8644005E6935 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				00B5D3A92B7BE26B00575D55 /* StationService.swift */,
+				00E04F5B2B8B8644005E6935 /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				0092CB6F2B7175A900A7E33F /* Station.swift in Sources */,
 				00E04F562B8A47A0005E6935 /* AutoHeightView.swift in Sources */,
 				0047C25D2B6F41D20039B04B /* WeatherStationsApp.swift in Sources */,
+				00E04F5C2B8B8644005E6935 /* LocationService.swift in Sources */,
 				00B110222B7D25EB00BE5F8D /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +387,9 @@
 				DEVELOPMENT_TEAM = F8M83D6SB4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Access to your current location is requred to show distance to weather stations.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Access to your current location is requred to show distance to weather stations.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access to your current location is requred to show distance to weather stations.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -412,6 +419,9 @@
 				DEVELOPMENT_TEAM = F8M83D6SB4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Access to your current location is requred to show distance to weather stations.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Access to your current location is requred to show distance to weather stations.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access to your current location is requred to show distance to weather stations.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

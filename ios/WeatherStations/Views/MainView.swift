@@ -136,6 +136,9 @@ struct MainView: View {
         .task {
             await viewModel.load()
         }
+        .task {
+            await viewModel.updateLocation()
+        }
     }
     
 }

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import CoreLocation
 
 class MainViewModel : ObservableObject {
     enum Route: Hashable {
@@ -16,6 +17,7 @@ class MainViewModel : ObservableObject {
     
     let stationService = StationService()
     let settingsRepository = SettingsRepository()
+    let locationService = LocationService()
     
     @Published private(set) var isLoading = true
     @Published private var allStations: [Station] = []
@@ -59,6 +61,33 @@ class MainViewModel : ObservableObject {
                 self?.starredStations = stations.filter { $0.isStarred }
             }
             .store(in: &cancellable)
+        
+        locationService.$location
+            .combineLatest($allStations)
+            .filter { (loc, stations) in
+                return loc != nil && !stations.isEmpty
+            }
+            .sink { [weak self] (loc, stations) in
+                
+                let stations = stations.map {
+                    var station = $0
+                    
+                    if let loc = loc, let lat = CLLocationDegrees(station.latitude ?? ""), let lng = CLLocationDegrees(station.longitude ?? "") {
+                        let l = CLLocation(latitude: lat, longitude: lng)
+                        station.distance = loc.distance(from: l)
+                    }
+                    
+                    return station
+                }
+                
+                self?.allStations = stations
+                self?.starredStations = stations.filter { $0.isStarred }
+            }
+            .store(in: &cancellable)
+    }
+    
+    func updateLocation() {
+        locationService.requestLocation()
     }
     
     @MainActor

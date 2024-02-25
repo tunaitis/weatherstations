@@ -82,12 +82,24 @@ struct StationView: View {
             
             HStack() {
                 
-                VStack(alignment: .leading) {
-                    Text("Updated")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                    Text(station.updated)
-                        .font(.subheadline)
+                HStack(spacing: 15) {
+                    VStack(alignment: .leading) {
+                        Text("Updated")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                        Text(station.updated)
+                            .font(.subheadline)
+                    }
+                    
+                    if (station.distance > 0) {
+                        VStack(alignment: .leading) {
+                            Text("Distance")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                            Text(String(format: "%.2f km", station.distance / 1000))
+                                .font(.subheadline)
+                        }
+                    }
                 }
                 
                 Spacer()
