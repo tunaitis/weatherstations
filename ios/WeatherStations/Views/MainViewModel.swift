@@ -97,7 +97,6 @@ class MainViewModel : ObservableObject {
         $sort
             .combineLatest($stations)
             .sink { [weak self] (sort, stations) in
-                print("updating sort")
                 if let self = self {
                     if sort == StationListSort.Alphabetical {
                         self.stations = stations.sorted { $0.name < $1.name }
