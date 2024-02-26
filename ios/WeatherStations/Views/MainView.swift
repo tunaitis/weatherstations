@@ -46,7 +46,7 @@ struct MainView: View {
                     }
                 )
             } else {
-                TabView {
+                TabView(selection: $viewModel.selectedTab) {
                     NavigationStack {
                         StationListView(
                             stations: viewModel.searchQuery.isEmpty ? viewModel.stations : viewModel.filteredStations,
@@ -76,7 +76,7 @@ struct MainView: View {
                     .tabItem {
                         Label("Stations", systemImage: "house")
                     }
-                    
+                    .tag(HomeScreen.stations)
                     
                     NavigationStack {
                         StationListView(
@@ -95,6 +95,7 @@ struct MainView: View {
                     .tabItem {
                         Label("Starred", systemImage: "star")
                     }
+                    .tag(HomeScreen.starred)
                     
                     StationMapView(
                         stations: viewModel.stations,
@@ -103,6 +104,16 @@ struct MainView: View {
                     .tabItem {
                         Label("Map", systemImage: "map")
                     }
+                    .tag(HomeScreen.map)
+                    
+                    NavigationStack {
+                        SettingsView()
+                        .navigationTitle("Settings")
+                    }
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
+                    }
+                    .tag(HomeScreen.settings)
                 }
                 .sheet(item: $selectedMapStation) { id in
                     if let station = viewModel.stations.first(where: { $0.id == id }) {

@@ -38,9 +38,12 @@ class MainViewModel : ObservableObject {
     @Published var searchQuery = ""
     @Published var error: Error? = nil
     
+    @Published var selectedTab: HomeScreen
+    
     private var cancellable = Set<AnyCancellable>()
     
     init() {
+        selectedTab = HomeScreen(rawValue: settingsRepository.homeScreen) ?? HomeScreen.stations
         
         $searchQuery
             .combineLatest($stations)

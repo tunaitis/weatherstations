@@ -9,6 +9,7 @@ import SwiftUI
 
 class SettingsRepository {
     @AppStorage("starredStations") private var starredStations = ""
+    @AppStorage("homeScreen") var homeScreen: String = "\(HomeScreen.stations)"
     
     func getStarredStations() -> [String] {
         return starredStations.split(separator: ",").map(String.init)
