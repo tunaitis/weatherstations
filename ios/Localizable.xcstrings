@@ -1,0 +1,234 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+
+    },
+    "%@ °C" : {
+
+    },
+    "%@ m/s" : {
+
+    },
+    "%@ mm" : {
+
+    },
+    "A-Z" : {
+
+    },
+    "About" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apie"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uždaryti"
+          }
+        }
+      }
+    },
+    "Dark Mode" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamsi tema"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
+      }
+    },
+    "Dew Point" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rasos taškas"
+          }
+        }
+      }
+    },
+    "Distance" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atstumas"
+          }
+        }
+      }
+    },
+    "English" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anglų"
+          }
+        }
+      }
+    },
+    "Foo" : {
+
+    },
+    "Home Screen" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pradžios ekranas"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalba"
+          }
+        }
+      }
+    },
+    "Lithuanian" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lietuvių"
+          }
+        }
+      }
+    },
+    "Map" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žemėlapis"
+          }
+        }
+      }
+    },
+    "Precipitation" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Krituliai"
+          }
+        }
+      }
+    },
+    "Reload" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perkrauti"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nustatymai"
+          }
+        }
+      }
+    },
+    "Starred" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pažymėti"
+          }
+        }
+      }
+    },
+    "Stations" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stotelės"
+          }
+        }
+      }
+    },
+    "Surface" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kelio danga"
+          }
+        }
+      }
+    },
+    "Temperature" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatūra"
+          }
+        }
+      }
+    },
+    "Updated" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atnaujinta"
+          }
+        }
+      }
+    },
+    "Wind Avg" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vėjas vid."
+          }
+        }
+      }
+    },
+    "Wind Max" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vėjas maks."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

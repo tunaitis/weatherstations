@@ -18,6 +18,7 @@
 		00665ED22B8C31FC00FDE9BE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00665ED12B8C31FC00FDE9BE /* SettingsView.swift */; };
 		00717FB12B8D029700F7C086 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00717FB02B8D029700F7C086 /* SettingsViewModel.swift */; };
 		00717FB32B8D0CCD00F7C086 /* HomeScreenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00717FB22B8D0CCD00F7C086 /* HomeScreenTab.swift */; };
+		00717FB52B8D1C8900F7C086 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 00717FB42B8D1C8900F7C086 /* Localizable.xcstrings */; };
 		0092CB6F2B7175A900A7E33F /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092CB6E2B7175A900A7E33F /* Station.swift */; };
 		00B1101D2B7CF13000BE5F8D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B1101C2B7CF13000BE5F8D /* ErrorView.swift */; };
 		00B110202B7D081900BE5F8D /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B1101F2B7D081900BE5F8D /* SettingsRepository.swift */; };
@@ -45,6 +46,7 @@
 		00665ED12B8C31FC00FDE9BE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		00717FB02B8D029700F7C086 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		00717FB22B8D0CCD00F7C086 /* HomeScreenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTab.swift; sourceTree = "<group>"; };
+		00717FB42B8D1C8900F7C086 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		0092CB6E2B7175A900A7E33F /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		00B1101C2B7CF13000BE5F8D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		00B1101F2B7D081900BE5F8D /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		0047C2502B6F41D10039B04B = {
 			isa = PBXGroup;
 			children = (
+				00717FB42B8D1C8900F7C086 /* Localizable.xcstrings */,
 				0047C25B2B6F41D20039B04B /* WeatherStations */,
 				0047C25A2B6F41D20039B04B /* Products */,
 			);
@@ -214,6 +217,7 @@
 			knownRegions = (
 				en,
 				Base,
+				lt,
 			);
 			mainGroup = 0047C2502B6F41D10039B04B;
 			productRefGroup = 0047C25A2B6F41D20039B04B /* Products */;
@@ -232,6 +236,7 @@
 			files = (
 				0047C2642B6F41D30039B04B /* Preview Assets.xcassets in Resources */,
 				0047C2612B6F41D30039B04B /* Assets.xcassets in Resources */,
+				00717FB52B8D1C8900F7C086 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
