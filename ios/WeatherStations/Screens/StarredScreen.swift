@@ -33,6 +33,18 @@ struct StarredScreen : View {
             )
             .navigationTitle("Starred")
             .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Picker("Foo", selection: $model.sort) {
+                            Text("A-Z").tag(StationListSort.Alphabetical)
+                            Text("Distance").tag(StationListSort.Distance)
+                        }
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease")
+                    }
+                }
+            }
         }
         .tabItem {
             Label("Starred", systemImage: "star")

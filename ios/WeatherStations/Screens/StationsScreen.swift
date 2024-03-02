@@ -37,8 +37,8 @@ struct StationsScreen : View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         Picker("Foo", selection: $model.sort) {
-                            Text("A-Z").tag(MainViewModel.StationListSort.Alphabetical)
-                            Text("Distance").tag(MainViewModel.StationListSort.Distance)
+                            Text("A-Z").tag(StationListSort.Alphabetical)
+                            Text("Distance").tag(StationListSort.Distance)
                         }
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease")

@@ -44,10 +44,7 @@ struct MainScreen: View {
         }
         .task {
             await model.load()
-        }
-        .task {
-            //viewModel.updateLocation()
+            model.updateLocation()
         }
     }
-    
 }

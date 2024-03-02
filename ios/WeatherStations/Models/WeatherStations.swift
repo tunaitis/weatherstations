@@ -7,15 +7,15 @@
 
 import SwiftUI
 import Combine
+import CoreLocation
+
+enum StationListSort {
+    case Alphabetical
+    case Distance
+}
 
 class WeatherStations : ObservableObject {
-    enum StationListSort {
-        case Alphabetical
-        case Distance
-    }
-    
     @Published private(set) var stations: [Station] = []
-    @Published private(set) var filteredStations: [Station] = []
     @Published private(set) var isLoading = true
     @Published var error: Error? = nil
     
@@ -25,6 +25,7 @@ class WeatherStations : ObservableObject {
     
     let stationService = StationService()
     let settings = AppSettings()
+    let locationService = LocationService()
     
     private var cancellable = Set<AnyCancellable>()
     
@@ -41,6 +42,44 @@ class WeatherStations : ObservableObject {
                 self?.stations = stations
             }
             .store(in: &cancellable)
+        
+        locationService.$location
+            .combineLatest($stations)
+            .filter { (loc, stations) in
+                return loc != nil && !stations.isEmpty
+            }
+            .sink { [weak self] (loc, stations) in
+                
+                let stations = stations.map {
+                    var station = $0
+                    
+                    if let loc = loc, let lat = CLLocationDegrees(station.latitude ?? ""), let lng = CLLocationDegrees(station.longitude ?? "") {
+                        let l = CLLocation(latitude: lat, longitude: lng)
+                        station.distance = loc.distance(from: l)
+                    }
+                    
+                    return station
+                }
+                
+                self?.stations = stations
+            }
+            .store(in: &cancellable)
+        
+        $sort
+            .dropFirst()
+            .combineLatest($stations)
+            .sink { [weak self] (sort, stations) in
+                if let self = self {
+                    if sort == StationListSort.Alphabetical {
+                        self.stations = stations.sorted { $0.name < $1.name }
+                    }
+                    
+                    if sort == StationListSort.Distance {
+                        self.stations = stations.sorted { $0.distance < $1.distance }
+                    }
+                }
+            }
+            .store(in: &cancellable)
     }
     
     @MainActor
@@ -52,7 +91,7 @@ class WeatherStations : ObservableObject {
         
         switch result {
         case .success(let stations):
-            self.stations = stations
+            self.stations = stations.sorted { $0.name < $1.name }
             starredIds = settings.getStarredStations()
             
         case .failure(let e):
@@ -70,5 +109,9 @@ class WeatherStations : ObservableObject {
         }
         
         settings.setStarredStations(stations: starredIds)
+    }
+    
+    func updateLocation() {
+        locationService.requestLocation()
     }
 }
