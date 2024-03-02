@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct StationPhotoView : View  {
-    @ObservedObject var model: WeatherStations
     var station: Station
     var onCloseClick: () -> Void
     
