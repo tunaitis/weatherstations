@@ -33,7 +33,6 @@
 		00E04F5C2B8B8644005E6935 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F5B2B8B8644005E6935 /* LocationService.swift */; };
 		00EAC55F2B93A7900063A7FF /* StationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EAC55E2B93A7900063A7FF /* StationHistoryView.swift */; };
 		00EAC5612B93A7C30063A7FF /* StationPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EAC5602B93A7C30063A7FF /* StationPhotoView.swift */; };
-		00EAC5642B93A8220063A7FF /* StationPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EAC5622B93A8220063A7FF /* StationPhotoViewModel.swift */; };
 		00EAC5652B93A8220063A7FF /* StationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EAC5632B93A8220063A7FF /* StationHistoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +64,6 @@
 		00E04F5B2B8B8644005E6935 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		00EAC55E2B93A7900063A7FF /* StationHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationHistoryView.swift; sourceTree = "<group>"; };
 		00EAC5602B93A7C30063A7FF /* StationPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationPhotoView.swift; sourceTree = "<group>"; };
-		00EAC5622B93A8220063A7FF /* StationPhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationPhotoViewModel.swift; sourceTree = "<group>"; };
 		00EAC5632B93A8220063A7FF /* StationHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationHistoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				00EAC5632B93A8220063A7FF /* StationHistoryViewModel.swift */,
-				00EAC5622B93A8220063A7FF /* StationPhotoViewModel.swift */,
 				00EAC5602B93A7C30063A7FF /* StationPhotoView.swift */,
 				00EAC55E2B93A7900063A7FF /* StationHistoryView.swift */,
 				0000E0B22B7A80F300ADAB6A /* Components */,
@@ -273,7 +270,6 @@
 				0044CA8F2B90B3FC00547C35 /* StarredScreen.swift in Sources */,
 				004569292B7A948600FEEC44 /* StationMapView.swift in Sources */,
 				0044CA932B91167100547C35 /* SettingsScreen.swift in Sources */,
-				00EAC5642B93A8220063A7FF /* StationPhotoViewModel.swift in Sources */,
 				00EAC5612B93A7C30063A7FF /* StationPhotoView.swift in Sources */,
 				00E04F532B8A1A21005E6935 /* String.swift in Sources */,
 				0044CA912B9115E400547C35 /* MapScreen.swift in Sources */,

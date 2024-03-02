@@ -14,9 +14,9 @@ enum MainScreenSheet: Hashable, Identifiable {
     var id: Self { return self }
 }
 
-enum LoadingState {
+enum LoadingState<T> {
     case loading
-    case loaded
+    case loaded(T)
     case error(Error)
 }
     
@@ -29,7 +29,7 @@ struct MainScreen: View {
     @State var presentedSheet: MainScreenSheet?
     @State var selectedMapStation: String?
     
-    @State var state: LoadingState = .loading
+    @State var state: LoadingState<Void> = .loading
     
     init(model: WeatherStations, settings: AppSettings) {
         self.model = model
@@ -45,7 +45,7 @@ struct MainScreen: View {
             return
         }
         
-        state = .loaded
+        state = .loaded(())
     }
     
     var body: some View {
@@ -106,6 +106,7 @@ struct MainScreen: View {
                     case .photo(let id):
                         if let station = model.stations.first(where: { $0.id == id }) {
                             StationPhotoView(
+                                model: model,
                                 station: station,
                                 onCloseClick: {
                                     presentedSheet = nil
