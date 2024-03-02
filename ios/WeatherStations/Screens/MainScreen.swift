@@ -106,7 +106,6 @@ struct MainScreen: View {
                     case .photo(let id):
                         if let station = model.stations.first(where: { $0.id == id }) {
                             StationPhotoView(
-                                model: model,
                                 station: station,
                                 onCloseClick: {
                                     presentedSheet = nil
