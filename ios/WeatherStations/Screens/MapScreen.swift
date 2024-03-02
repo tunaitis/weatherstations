@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MapScreen : View {
     @ObservedObject var model: WeatherStations
-    @State var selectedMapStation: String?
+    @Binding var selectedMapStation: String?
     
     var body : some View {
         StationMapView(

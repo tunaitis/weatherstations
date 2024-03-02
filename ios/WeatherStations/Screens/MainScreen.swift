@@ -20,6 +20,7 @@ struct MainScreen: View {
     
     @State var selectedTab: HomeScreen
     @State var presentedSheet: MainScreenSheet?
+    @State var selectedMapStation: String?
     
     init(model: WeatherStations, settings: AppSettings) {
         self.model = model
@@ -53,8 +54,31 @@ struct MainScreen: View {
                         onPhotoClick: { presentedSheet = .photo($0) },
                         onHistoryClick: { presentedSheet = .history($0) }
                     )
-                    MapScreen(model: model)
+                    MapScreen(
+                        model: model,
+                        selectedMapStation: $selectedMapStation
+                    )
                     SettingsScreen(settings: settings)
+                }
+                .sheet(item: $selectedMapStation) { id in
+                    if let station = model.stations.first(where: { $0.id == id }) {
+                        StationView(
+                            station: station,
+                            onStarClick: { model.toggleStar(id: $0) },
+                            onHistoryClick: { id in
+                                selectedMapStation = nil
+                                presentedSheet = .history(id)
+                            },
+                            onPhotoClick: { id in
+                                selectedMapStation = nil
+                                presentedSheet = .photo(id)
+                            }
+                        )
+                        .padding()
+                        .presentationDragIndicator(.visible)
+                        .presentationDetents([.medium])
+                        .frame(maxHeight: .infinity, alignment: .top)
+                    }
                 }
                 .sheet(item: $presentedSheet) { sheet in
                     switch sheet {
