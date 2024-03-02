@@ -3,7 +3,7 @@
 Weather Stations is a mobile app that shows live information from road weather stations located in
 Lithuania.
 
-![Domain Monitor](media/android.png) ![Domain Monitor](media/android2.png)
+![Weather Stations App](media/hero.png)
 
 ## Android App
 
