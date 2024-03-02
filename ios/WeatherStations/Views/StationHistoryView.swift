@@ -11,13 +11,44 @@ struct StationHistoryView : View  {
     var station: Station
     var onCloseClick: () -> Void
     
-    @StateObject var viewModel = StationHistoryViewModel()
+    @State var state: LoadingState<[Station]> = .loading
+    
+    let stationService = StationService()
+    
+    func load() async  {
+        let result = await stationService.getHistoricalData(id: station.id)
+        
+        switch result {
+        case .success(var history):
+            var i = 0
+            history = history.map {
+                var item = $0
+                item.id = "\(i)"
+                i += 1
+                return item
+            }
+            
+            state = .loaded(history)
+        case .failure(let error):
+            state = .error(error)
+        }
+    }
     
     var body: some View {
         VStack {
-            if viewModel.isLoading {
+            switch state {
+            case .loading:
                 ProgressView()
-            } else {
+            case .error(let error):
+                ErrorView(
+                    message: error.localizedDescription,
+                    onReload: {
+                        Task {
+                            await load()
+                        }
+                    }
+                )
+            case .loaded(let history):
                 NavigationStack {
                     VStack {
                         ScrollView([.horizontal, .vertical]) {
@@ -32,7 +63,7 @@ struct StationHistoryView : View  {
                                     Text("Wind Max")
                                 }.bold()
                                 Divider()
-                                ForEach(viewModel.history) { item in
+                                ForEach(history) { item in
                                     GridRow {
                                         Text(item.updated)
                                         Text("\(item.temperature ?? "") °C")
@@ -42,7 +73,7 @@ struct StationHistoryView : View  {
                                         Text("\(item.windAverage ?? "") m/s")
                                         Text("\(item.windMax ?? "") m/s")
                                     }
-                                    if item != viewModel.history.last {
+                                    if item != history.last {
                                         Divider()
                                     }
                                 }
@@ -56,10 +87,11 @@ struct StationHistoryView : View  {
                         Button("Close", action: onCloseClick)
                     }
                 }
+                
             }
         }
         .task {
-            await viewModel.load(id: station.id)
+            await load()
         }
     }
 }

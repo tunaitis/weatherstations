@@ -33,7 +33,6 @@
 		00E04F5C2B8B8644005E6935 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F5B2B8B8644005E6935 /* LocationService.swift */; };
 		00EAC55F2B93A7900063A7FF /* StationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EAC55E2B93A7900063A7FF /* StationHistoryView.swift */; };
 		00EAC5612B93A7C30063A7FF /* StationPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EAC5602B93A7C30063A7FF /* StationPhotoView.swift */; };
-		00EAC5652B93A8220063A7FF /* StationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EAC5632B93A8220063A7FF /* StationHistoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +63,6 @@
 		00E04F5B2B8B8644005E6935 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		00EAC55E2B93A7900063A7FF /* StationHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationHistoryView.swift; sourceTree = "<group>"; };
 		00EAC5602B93A7C30063A7FF /* StationPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationPhotoView.swift; sourceTree = "<group>"; };
-		00EAC5632B93A8220063A7FF /* StationHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationHistoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +181,6 @@
 		00EAA0AC2B7954590081C1FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				00EAC5632B93A8220063A7FF /* StationHistoryViewModel.swift */,
 				00EAC5602B93A7C30063A7FF /* StationPhotoView.swift */,
 				00EAC55E2B93A7900063A7FF /* StationHistoryView.swift */,
 				0000E0B22B7A80F300ADAB6A /* Components */,
@@ -276,7 +273,6 @@
 				004569272B7A945400FEEC44 /* StationListView.swift in Sources */,
 				00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */,
 				00B110202B7D081900BE5F8D /* SettingsRepository.swift in Sources */,
-				00EAC5652B93A8220063A7FF /* StationHistoryViewModel.swift in Sources */,
 				0044CA882B90A7A800547C35 /* WeatherStations.swift in Sources */,
 				00B1101D2B7CF13000BE5F8D /* ErrorView.swift in Sources */,
 				0000E0B42B7A811900ADAB6A /* StationView.swift in Sources */,
