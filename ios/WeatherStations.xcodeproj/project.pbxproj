@@ -25,7 +25,6 @@
 		0092CB6F2B7175A900A7E33F /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092CB6E2B7175A900A7E33F /* Station.swift */; };
 		00B1101D2B7CF13000BE5F8D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B1101C2B7CF13000BE5F8D /* ErrorView.swift */; };
 		00B110202B7D081900BE5F8D /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B1101F2B7D081900BE5F8D /* SettingsRepository.swift */; };
-		00B110222B7D25EB00BE5F8D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B110212B7D25EB00BE5F8D /* SearchView.swift */; };
 		00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B5D3A92B7BE26B00575D55 /* StationService.swift */; };
 		00BB5EBA2B9206070082E930 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB5EB92B9206070082E930 /* View.swift */; };
 		00E04F532B8A1A21005E6935 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E04F522B8A1A21005E6935 /* String.swift */; };
@@ -55,7 +54,6 @@
 		0092CB6E2B7175A900A7E33F /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		00B1101C2B7CF13000BE5F8D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		00B1101F2B7D081900BE5F8D /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
-		00B110212B7D25EB00BE5F8D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		00B5D3A92B7BE26B00575D55 /* StationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationService.swift; sourceTree = "<group>"; };
 		00BB5EB92B9206070082E930 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		00E04F522B8A1A21005E6935 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -76,27 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0000E0B22B7A80F300ADAB6A /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				00E04F552B8A47A0005E6935 /* AutoHeightView.swift */,
-				0000E0B32B7A811900ADAB6A /* StationView.swift */,
-				004569262B7A945400FEEC44 /* StationListView.swift */,
-				004569282B7A948600FEEC44 /* StationMapView.swift */,
-				00B1101C2B7CF13000BE5F8D /* ErrorView.swift */,
-				00B110212B7D25EB00BE5F8D /* SearchView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		0044CA892B90A9A600547C35 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				0044CA8A2B90A9D200547C35 /* MainScreen.swift */,
-				0044CA8C2B90AF8C00547C35 /* StationsScreen.swift */,
-				0044CA8E2B90B3FC00547C35 /* StarredScreen.swift */,
 				0044CA902B9115E400547C35 /* MapScreen.swift */,
 				0044CA922B91167100547C35 /* SettingsScreen.swift */,
+				0044CA8E2B90B3FC00547C35 /* StarredScreen.swift */,
+				0044CA8C2B90AF8C00547C35 /* StationsScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -181,10 +166,14 @@
 		00EAA0AC2B7954590081C1FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				00EAC5602B93A7C30063A7FF /* StationPhotoView.swift */,
-				00EAC55E2B93A7900063A7FF /* StationHistoryView.swift */,
-				0000E0B22B7A80F300ADAB6A /* Components */,
+				00E04F552B8A47A0005E6935 /* AutoHeightView.swift */,
+				00B1101C2B7CF13000BE5F8D /* ErrorView.swift */,
 				00717FB22B8D0CCD00F7C086 /* HomeScreenTab.swift */,
+				00EAC55E2B93A7900063A7FF /* StationHistoryView.swift */,
+				004569262B7A945400FEEC44 /* StationListView.swift */,
+				004569282B7A948600FEEC44 /* StationMapView.swift */,
+				00EAC5602B93A7C30063A7FF /* StationPhotoView.swift */,
+				0000E0B32B7A811900ADAB6A /* StationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -283,7 +272,6 @@
 				0047C25D2B6F41D20039B04B /* WeatherStationsApp.swift in Sources */,
 				0003850B2B8FA6AC006B34CA /* AppSettings.swift in Sources */,
 				00E04F5C2B8B8644005E6935 /* LocationService.swift in Sources */,
-				00B110222B7D25EB00BE5F8D /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
