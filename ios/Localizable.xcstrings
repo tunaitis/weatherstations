@@ -37,7 +37,14 @@
       }
     },
     "Dark" : {
-
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamsi"
+          }
+        }
+      }
     },
     "Dark Mode" : {
       "localizations" : {
@@ -89,9 +96,6 @@
         }
       }
     },
-    "Foo" : {
-
-    },
     "Home Screen" : {
       "localizations" : {
         "lt" : {
@@ -113,7 +117,14 @@
       }
     },
     "Light" : {
-
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Šviesi"
+          }
+        }
+      }
     },
     "Lithuanian" : {
       "localizations" : {
@@ -165,6 +176,16 @@
         }
       }
     },
+    "Sort" : {
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rūšiavimas"
+          }
+        }
+      }
+    },
     "Starred" : {
       "localizations" : {
         "lt" : {
@@ -196,7 +217,14 @@
       }
     },
     "System" : {
-
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sisteminė"
+          }
+        }
+      }
     },
     "Temperature" : {
       "localizations" : {
@@ -209,7 +237,14 @@
       }
     },
     "Theme" : {
-
+      "localizations" : {
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tema"
+          }
+        }
+      }
     },
     "Updated" : {
       "localizations" : {

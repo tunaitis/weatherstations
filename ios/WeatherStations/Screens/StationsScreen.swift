@@ -36,7 +36,7 @@ struct StationsScreen : View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
-                        Picker("Foo", selection: $model.sort) {
+                        Picker("Sort", selection: $model.sort) {
                             Text("A-Z").tag(StationListSort.Alphabetical)
                             Text("Distance").tag(StationListSort.Distance)
                         }
