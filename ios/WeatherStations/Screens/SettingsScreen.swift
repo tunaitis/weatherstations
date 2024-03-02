@@ -25,7 +25,6 @@ struct SettingsScreen : View {
                             Text("Dark").tag(AppTheme.dark)
                             Text("Light").tag(AppTheme.light)
                         }
-                        Toggle("Dark Mode", isOn: $darkMode)
                         Picker(selection: $settings.language, label: Text("Language")) {
                             Text("English").tag("en")
                             Text("Lithuanian").tag("lt")
