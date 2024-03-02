@@ -47,6 +47,7 @@
       }
     },
     "Dark Mode" : {
+      "extractionState" : "stale",
       "localizations" : {
         "lt" : {
           "stringUnit" : {

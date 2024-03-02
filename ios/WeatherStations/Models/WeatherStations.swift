@@ -16,9 +16,6 @@ enum StationListSort {
 
 class WeatherStations : ObservableObject {
     @Published private(set) var stations: [Station] = []
-    @Published private(set) var isLoading = true
-    @Published var error: Error? = nil
-    
     @Published private(set) var starredIds: [String] = []
     
     @Published var sort: StationListSort = StationListSort.Alphabetical
@@ -83,10 +80,7 @@ class WeatherStations : ObservableObject {
     }
     
     @MainActor
-    func load() async {
-        error = nil
-        isLoading = true
-        
+    func load() async -> Error? {
         let result = await stationService.getStations()
         
         switch result {
@@ -95,10 +89,10 @@ class WeatherStations : ObservableObject {
             starredIds = settings.getStarredStations()
             
         case .failure(let e):
-            error = e
+            return e
         }
         
-        isLoading = false
+        return nil
     }
     
     func toggleStar(id: String) {

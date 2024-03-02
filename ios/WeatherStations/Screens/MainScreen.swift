@@ -14,6 +14,13 @@ enum MainScreenSheet: Hashable, Identifiable {
     var id: Self { return self }
 }
 
+enum LoadingState {
+    case loading
+    case loaded
+    case error(Error)
+}
+    
+
 struct MainScreen: View {
     @ObservedObject var model: WeatherStations
     @ObservedObject var settings: AppSettings
@@ -22,27 +29,41 @@ struct MainScreen: View {
     @State var presentedSheet: MainScreenSheet?
     @State var selectedMapStation: String?
     
+    @State var state: LoadingState = .loading
+    
     init(model: WeatherStations, settings: AppSettings) {
         self.model = model
         self.settings = settings
-        
         self.selectedTab = settings.homeScreen
+    }
+    
+    func load() async {
+        state = .loading
+        
+        if let error = await model.load() {
+            state = .error(error)
+            return
+        }
+        
+        state = .loaded
     }
     
     var body: some View {
         VStack {
-            if model.isLoading {
+            
+            switch state {
+            case .loading:
                 ProgressView()
-            } else if let error = model.error {
+            case .error(let error):
                 ErrorView(
                     message: error.localizedDescription,
                     onReload: {
                         Task {
-                            await model.load()
+                            await load()
                         }
                     }
                 )
-            } else {
+            case .loaded:
                 TabView(selection: $selectedTab) {
                     StationsScreen(
                         model: model,
@@ -106,7 +127,7 @@ struct MainScreen: View {
             }
         }
         .task {
-            await model.load()
+            await load()
             model.updateLocation()
         }
     }
