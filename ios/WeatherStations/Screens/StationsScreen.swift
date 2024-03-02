@@ -9,7 +9,11 @@ import SwiftUI
 
 struct StationsScreen : View {
     @ObservedObject var model: WeatherStations
+    var onPhotoClick: (String) -> Void
+    var onHistoryClick: (String) -> Void
+    
     @State var searchQuery = ""
+    
     
     var filteredStations: [Station] {
         guard !searchQuery.isEmpty else { return model.stations }
@@ -24,12 +28,8 @@ struct StationsScreen : View {
             StationListView(
                 stations: filteredStations,
                 onStarClick: { model.toggleStar(id: $0) },
-                onHistoryClick: { id in
-                    //presentedSheet = Sheet.showHistory(id)
-                },
-                onPhotoClick: { id in
-                    //presentedSheet = Sheet.showPhoto(id)
-                }
+                onHistoryClick: onHistoryClick,
+                onPhotoClick: onPhotoClick
             )
             .navigationTitle("Stations")
             .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))

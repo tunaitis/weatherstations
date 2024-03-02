@@ -7,11 +7,19 @@
 
 import SwiftUI
 
+enum MainScreenSheet: Hashable, Identifiable {
+    case photo(String)
+    case history(String)
+    
+    var id: Self { return self }
+}
+
 struct MainScreen: View {
     @ObservedObject var model: WeatherStations
     @ObservedObject var settings: AppSettings
     
     @State var selectedTab: HomeScreen
+    @State var presentedSheet: MainScreenSheet?
     
     init(model: WeatherStations, settings: AppSettings) {
         self.model = model
@@ -35,10 +43,41 @@ struct MainScreen: View {
                 )
             } else {
                 TabView(selection: $selectedTab) {
-                    StationsScreen(model: model)
-                    StarredScreen(model: model)
+                    StationsScreen(
+                        model: model,
+                        onPhotoClick: { presentedSheet = .photo($0) },
+                        onHistoryClick: { presentedSheet = .history($0) }
+                    )
+                    StarredScreen(
+                        model: model,
+                        onPhotoClick: { presentedSheet = .photo($0) },
+                        onHistoryClick: { presentedSheet = .history($0) }
+                    )
                     MapScreen(model: model)
                     SettingsScreen(settings: settings)
+                }
+                .sheet(item: $presentedSheet) { sheet in
+                    switch sheet {
+                    case .photo(let id):
+                        if let station = model.stations.first(where: { $0.id == id }) {
+                            StationPhotoView(
+                                station: station,
+                                onCloseClick: {
+                                    presentedSheet = nil
+                                }
+                            )
+                        }
+                        
+                    case .history(let id):
+                        if let station = model.stations.first(where: { $0.id == id }) {
+                            StationHistoryView(
+                                station: station,
+                                onCloseClick: {
+                                    presentedSheet = nil
+                                }
+                            )
+                        }
+                    }
                 }
             }
         }
