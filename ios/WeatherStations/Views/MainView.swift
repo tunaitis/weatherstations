@@ -7,18 +7,7 @@
 
 import SwiftUI
 
-struct GeometryContentSize<Content: View>: View {
-    public var content: (CGSize) -> Content
-    
-    var body: some View {
-        GeometryReader { geo in
-            content(geo.size)
-        }.frame(height: 200)
-    }
-}
-
 struct MainView: View {
-    
     enum Sheet: Hashable, Identifiable {
         case showPhoto(String)
         case showHistory(String)
@@ -26,7 +15,10 @@ struct MainView: View {
         var id: Self { return self }
     }
     
-    @StateObject var viewModel = MainViewModel()
+    @ObservedObject var model: WeatherStations
+    
+    //@StateObject var viewModel = MainViewModel()
+    
     @State var presentedSheet: Sheet?
     @State var selectedOption: String = "Aaa"
     @State var selectedMapStation: String?
@@ -34,18 +26,19 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            if viewModel.isLoading {
+            if model.isLoading {
                 ProgressView()
-            } else if let error = viewModel.error {
+            } else if let error = model.error {
                 ErrorView(
                     message: error.localizedDescription,
                     onReload: {
                         Task {
-                            await viewModel.load()
+                            await model.load()
                         }
                     }
                 )
             } else {
+                /*
                 TabView(selection: $viewModel.selectedTab) {
                     NavigationStack {
                         StationListView(
@@ -157,20 +150,15 @@ struct MainView: View {
                             )
                         }
                     }
-                }
+                }*/
             }
         }
         .task {
-            await viewModel.load()
+            await model.load()
         }
         .task {
-            viewModel.updateLocation()
+            //viewModel.updateLocation()
         }
     }
     
 }
-
-#Preview {
-    MainView()
-}
-

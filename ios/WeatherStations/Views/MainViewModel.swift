@@ -16,8 +16,10 @@ class MainViewModel : ObservableObject {
         case Distance
     }
     
+    @EnvironmentObject var settings: AppSettings
+    
     let stationService = StationService()
-    let settingsRepository = SettingsRepository()
+    //let settingsRepository = SettingsRepository()
     let locationService = LocationService()
     
     @Published private(set) var isLoading = true
@@ -38,12 +40,12 @@ class MainViewModel : ObservableObject {
     @Published var searchQuery = ""
     @Published var error: Error? = nil
     
-    @Published var selectedTab: HomeScreen
+    @Published var selectedTab = HomeScreen.stations
     
     private var cancellable = Set<AnyCancellable>()
     
     init() {
-        selectedTab = HomeScreen(rawValue: settingsRepository.homeScreen) ?? HomeScreen.stations
+        // selectedTab = settings.homeScreen
         
         $searchQuery
             .combineLatest($stations)
@@ -127,7 +129,7 @@ class MainViewModel : ObservableObject {
         switch result {
         case .success(let stations):
             self.stations = stations
-            starredIds = settingsRepository.getStarredStations()
+            starredIds = settings.getStarredStations()
             
         case .failure(let e):
             error = e
@@ -143,6 +145,6 @@ class MainViewModel : ObservableObject {
             starredIds.append(id)
         }
         
-        settingsRepository.setStarredStations(stations: starredIds)
+        settings.setStarredStations(stations: starredIds)
     }
 }

@@ -36,6 +36,9 @@
         }
       }
     },
+    "Dark" : {
+
+    },
     "Dark Mode" : {
       "localizations" : {
         "lt" : {
@@ -108,6 +111,9 @@
           }
         }
       }
+    },
+    "Light" : {
+
     },
     "Lithuanian" : {
       "localizations" : {
@@ -189,6 +195,9 @@
         }
       }
     },
+    "System" : {
+
+    },
     "Temperature" : {
       "localizations" : {
         "lt" : {
@@ -198,6 +207,9 @@
           }
         }
       }
+    },
+    "Theme" : {
+
     },
     "Updated" : {
       "localizations" : {
