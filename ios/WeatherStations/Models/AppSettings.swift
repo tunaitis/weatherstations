@@ -5,6 +5,7 @@
 //  Created by Simon Tunaitis on 28/02/2024.
 //
 
+import Foundation
 import SwiftUI
 import Combine
 
@@ -27,5 +28,13 @@ class AppSettings : ObservableObject {
     
     func setStarredStations(stations: [String]) {
         starredStations = stations.joined(separator: ",")
+    }
+    
+    func getAppVersion() -> String {
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return appVersion
+        }
+        
+        return "Unknown"
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0000E0B42B7A811900ADAB6A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000E0B32B7A811900ADAB6A /* StationView.swift */; };
+		00034E2A2B978D4B00763628 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00034E292B978D4B00763628 /* AboutScreen.swift */; };
 		0003850B2B8FA6AC006B34CA /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0003850A2B8FA6AC006B34CA /* AppSettings.swift */; };
 		0044CA882B90A7A800547C35 /* WeatherStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0044CA872B90A7A800547C35 /* WeatherStations.swift */; };
 		0044CA8B2B90A9D200547C35 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0044CA8A2B90A9D200547C35 /* MainScreen.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		0000E0B32B7A811900ADAB6A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
+		00034E292B978D4B00763628 /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
 		0003850A2B8FA6AC006B34CA /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		0044CA872B90A7A800547C35 /* WeatherStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStations.swift; sourceTree = "<group>"; };
 		0044CA8A2B90A9D200547C35 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				0044CA922B91167100547C35 /* SettingsScreen.swift */,
 				0044CA8E2B90B3FC00547C35 /* StarredScreen.swift */,
 				0044CA8C2B90AF8C00547C35 /* StationsScreen.swift */,
+				00034E292B978D4B00763628 /* AboutScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				00B5D3AA2B7BE26B00575D55 /* StationService.swift in Sources */,
 				00B110202B7D081900BE5F8D /* SettingsRepository.swift in Sources */,
 				0044CA882B90A7A800547C35 /* WeatherStations.swift in Sources */,
+				00034E2A2B978D4B00763628 /* AboutScreen.swift in Sources */,
 				00B1101D2B7CF13000BE5F8D /* ErrorView.swift in Sources */,
 				0000E0B42B7A811900ADAB6A /* StationView.swift in Sources */,
 				0092CB6F2B7175A900A7E33F /* Station.swift in Sources */,

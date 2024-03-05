@@ -31,7 +31,9 @@ struct SettingsScreen : View {
                         }
                     }
                     Section {
-                        Text("About")
+                        NavigationLink("About") {
+                            AboutScreen(settings: settings)
+                        }
                     }
                 }.listStyle(.insetGrouped)
             }
