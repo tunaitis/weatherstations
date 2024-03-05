@@ -25,9 +25,9 @@ struct AboutScreen : View {
                 }
             }
             Text("View weather information from more than 100 stations located on the main roads in Lithuania.")
-            Text("The weather data used in the app comes from [Lithuanian Road Administration](https://eismoinfo.lt)")
+            Text("The weather data used in the app comes from [Lithuanian Road Administration](https://eismoinfo.lt).")
             Text("Weather Stations is free and open source software. The source code can be found [here](https://github.com/tunaitis/weatherstations). If you want to report a bug or request a feature, please [create an issue](https://github.com/tunaitis/weatherstations/issues) on the project's GitHub page.")
-            Text("The app icon is from [flaticon.com](https://flaticon.com)")
+            Text("The app icon is from [flaticon.com](https://flaticon.com).")
             Spacer()
         }
         .padding()
